@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CA8EBC19-6B5C-4752-B35B-36FF205ED491}</ProjectGuid>
+    <ProjectGuid>{0B239462-DE5A-4B8E-8804-1E70AD3DCB15}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SportsStore.Domain</RootNamespace>
@@ -73,10 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IProductRepository.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="Concrete\DbContext.cs" />
-    <Compile Include="Concrete\ProductReporsitory.cs" />
-    <Compile Include="Enities\Product.cs" />
+    <Compile Include="Concrete\DbProductContext.cs" />
+    <Compile Include="Concrete\ProductRepository.cs" />
+    <Compile Include="Entities\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

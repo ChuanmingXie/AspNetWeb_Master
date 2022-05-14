@@ -1,28 +1,27 @@
 ﻿/*****************************************************************************
 *项目名称:SportsStore.Domain.Concrete
 *项目描述:
-*类 名 称:ProductReporsitory
+*类 名 称:DbContext
 *类 描 述:
 *创 建 人:Chuanmingxie
-*创建时间:2022/5/13 21:49:58
+*创建时间:2022/5/14 15:56:38
 *修 改 人:
 *修改时间:
 *作用描述:<FUNCTION>
 *Copyright @ chuanming 2022. All rights reserved
 ******************************************************************************/
-using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SportsStore.Domain.Concrete
 {
-    public class ProductRepository : IProductRepository
+    public class DbProductContext : DbContext
     {
-        private readonly EFDbContext dbContext = new EFDbContext();
-        public IEnumerable<Product> Products
-        {
-            get { return dbContext.Products; }
-        }
-
+        public DbSet<Product> Products { get; set; }
     }
 }
