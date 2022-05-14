@@ -41,6 +41,9 @@
 2. 功能开发
 	i. Ninject依赖注入容器
 		A. Ninject初始化
+			在WebUI项目中创建 Infrastructure （基础设置）文件夹，
+			在此文件夹中创建实现依赖注入解析接口IDependencyResolver的NinjectDependencyResolver类(初始化基础结构的新实例)
+			具体实现参考:<a href="https://github.com/ChuanmingXie/AspNetWeb_Master/blob/master/SportsStore.WebUI/Infrastructure/NinjectDepedencyResolver.cs">gitHub</a>
 		B. 域模型与存储库
 		C. 测试存储库
 	
