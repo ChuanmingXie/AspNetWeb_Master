@@ -29,23 +29,25 @@
 #### C. 命令：
 	Install-package Ninject.Web.Common -version 3.0.0.7 -projectname SportsStore.WebUI
 	Install-package Ninject.Web.Common -version 3.0.0.7 -projectname SportsStore.UnitTests
->>>>Install-package Ninject.MVC3 -version 3.0.0.6 -projectname SportsStore.WebUI
->>>>Install-package Ninject.MVC3 -version 3.0.0.6 -projectname SportsStore.UnitTests
->>>>Install-package Moq -version 4.1.1309.1617 -projectname SportsStore.WebUI
->>>>Install-package Moq -version 4.1.1309.1617 -projectname SportsStore.UnitTests
->>>>Install-package Microsoft.Aspnet.Mvc -version 5.2.7 -projectname SportsStore.Domain
->>>>Install-package Microsoft.Aspnet.Mvc -version 5.2.7 -projectname SportsStore.UnitTests
->>>>Install-package EntityFramework -projectname SportsStore.WebUI
->>>>Install-package EntityFramework -projectname SportsStore.Domain
->>>>Install-package Bootstrap -version 3.4.1 -projectname SportsStore.WebUI
+	Install-package Ninject.MVC3 -version 3.0.0.6 -projectname SportsStore.WebUI
+	Install-package Ninject.MVC3 -version 3.0.0.6 -projectname SportsStore.UnitTests
+	Install-package Moq -version 4.1.1309.1617 -projectname SportsStore.WebUI
+	Install-package Moq -version 4.1.1309.1617 -projectname SportsStore.UnitTests
+	Install-package Microsoft.Aspnet.Mvc -version 5.2.7 -projectname SportsStore.Domain
+	Install-package Microsoft.Aspnet.Mvc -version 5.2.7 -projectname SportsStore.UnitTests
+	Install-package EntityFramework -projectname SportsStore.WebUI
+	Install-package EntityFramework -projectname SportsStore.Domain
+	Install-package Bootstrap -version 3.4.1 -projectname SportsStore.WebUI
 
 ## 2. 功能开发
 ### i. Ninject依赖注入容器
 #### A. Ninject初始化
->>>>在WebUI项目中创建 Infrastructure （基础设置）文件夹，
->>>>在此文件夹中创建实现依赖注入解析接口IDependencyResolver的NinjectDependencyResolver类(初始化基础结构的新实例)
->>>>具体实现参考:<a href="https://github.com/ChuanmingXie/AspNetWeb_Master/blob/master/SportsStore.WebUI/Infrastructure/NinjectDepedencyResolver.cs">gitHub</a>
+	在WebUI项目中创建 Infrastructure （基础设置）文件夹，
+	在此文件夹中创建实现依赖注入解析接口IDependencyResolver的NinjectDependencyResolver类(初始化基础结构的新实例)
+	具体实现参考:<a href="https://github.com/ChuanmingXie/AspNetWeb_Master/blob/master/SportsStore.WebUI/Infrastructure/NinjectDepedencyResolver.cs">gitHub</a>
 #### B. 域模型与存储库
+
 #### C. 测试存储库
+	
 	
 
