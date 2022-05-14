@@ -4,6 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsStore.WebUI", "SportsStore.WebUI\SportsStore.WebUI.csproj", "{88E6535C-3F6B-40A8-B6CA-3AF42DD65381}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CA8EBC19-6B5C-4752-B35B-36FF205ED491} = {CA8EBC19-6B5C-4752-B35B-36FF205ED491}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsStore.UnitTests", "SportsStore.UnitTests\SportsStore.UnitTests.csproj", "{3B3F2017-2702-4A2B-BF93-E8AEA238D8D0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CA8EBC19-6B5C-4752-B35B-36FF205ED491} = {CA8EBC19-6B5C-4752-B35B-36FF205ED491}
+		{88E6535C-3F6B-40A8-B6CA-3AF42DD65381} = {88E6535C-3F6B-40A8-B6CA-3AF42DD65381}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsStore.Domain", "SportsStore.Domain\SportsStore.Domain.csproj", "{CA8EBC19-6B5C-4752-B35B-36FF205ED491}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +26,14 @@ Global
 		{88E6535C-3F6B-40A8-B6CA-3AF42DD65381}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88E6535C-3F6B-40A8-B6CA-3AF42DD65381}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88E6535C-3F6B-40A8-B6CA-3AF42DD65381}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B3F2017-2702-4A2B-BF93-E8AEA238D8D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B3F2017-2702-4A2B-BF93-E8AEA238D8D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B3F2017-2702-4A2B-BF93-E8AEA238D8D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B3F2017-2702-4A2B-BF93-E8AEA238D8D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA8EBC19-6B5C-4752-B35B-36FF205ED491}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA8EBC19-6B5C-4752-B35B-36FF205ED491}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA8EBC19-6B5C-4752-B35B-36FF205ED491}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA8EBC19-6B5C-4752-B35B-36FF205ED491}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
