@@ -1,9 +1,9 @@
 # AspNetWeb_Master
 在.NET Framework4.8 平台和VS2019IDE下重写《精通ASP.NET Mvc5》相关 .NET Mvc5框架的相关测试案例。统一研究一下书籍当中组件使用出现的问题
 
-1. 创建构建
-	i. 创建新项目
-		A. SportsStore.WebUI 项目的配置如下
+#1. 创建构建
+	##i. 创建新项目
+		###A. SportsStore.WebUI 项目的配置如下
 			模板选择： ASP.NET Web Application(.NET Framework);
 			框架选择： .NET Framework4.8;
 			创建新的ASP.NET Web 应用程序选择： 空
