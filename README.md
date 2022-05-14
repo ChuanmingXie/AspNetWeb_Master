@@ -53,20 +53,20 @@
 	产品描述模型 product.cs
 	具体实现参考:
 [Product.cs](https://github.com/ChuanmingXie/AspNetWeb_Master/blob/master/SportsStore.Domain/Entities/Product.cs "Product.cs")
+
 	抽象存储库 IProductRepository.cs 接口
 	具体实现参考:
 [IProductRepository.cs](https://github.com/ChuanmingXie/AspNetWeb_Master/blob/master/SportsStore.Domain/Abstract/IProductRepository.cs "IProductRepository.cs")
+	
 	完善DI容器解析类
 	具体实现参考:
 [NinjectDepedencyResolver.cs](https://github.com/ChuanmingXie/AspNetWeb_Master/blob/master/SportsStore.WebUI/Infrastructure/NinjectDepedencyResolver.cs "NinjectDepedencyResolver.cs")
+	
 	注册DI容器解析
 	具体实现参考:
 [NinjectWebCommon.cs](https://github.com/ChuanmingXie/AspNetWeb_Master/blob/master/SportsStore.WebUI/App_Start/NinjectWebCommon.cs "NinjectWebCommon.cs")
-	只需要在自动添加的类里添加注册代码
-	/// <summary>
-	/// Load your modules or register your services here!
-	/// </summary>
-	/// <param name="kernel">The kernel.</param>
+	
+	只需要在自动添加的类里添加注册代码 Load your modules or register your services here!
 	private static void RegisterServices(IKernel kernel)
 	{
 		DependencyResolver.SetResolver(new Infrastructure.NinjectDependencyResolver(kernel));
