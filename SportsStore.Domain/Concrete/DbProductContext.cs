@@ -22,6 +22,15 @@ namespace SportsStore.Domain.Concrete
 {
     public class DbProductContext : DbContext
     {
+        public DbProductContext():base("ProductDB")
+        {
+
+        }
         public DbSet<Product> Products { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Properties<decimal>().Configure(config => config.HasPrecision(18, 4));
+        }
     }
 }

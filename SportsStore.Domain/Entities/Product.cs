@@ -29,11 +29,12 @@ namespace SportsStore.Domain.Entities
 
         [Display(Name = "价格")]
         [DataType(DataType.Currency)]
-        [Column(TypeName = "decimal(18,2)")]
+        //[Column(TypeName = "decimal(18,2)")] EF Core才支持
         public decimal Price { get; set; }
 
         [Display(Name = "分类")]
         [StringLength(60)]
         public string Category { get; set; }
+
     }
 }
