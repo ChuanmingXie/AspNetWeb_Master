@@ -21,23 +21,22 @@
 	Microsoft.Aspnet.Mvc在.NET Framework4.8中使用版本5.2.7 所以 Domain和UnitTests安装5.2.7
 	Ninject.MVC3安装的结果是Ninject.web.mvc暂时未发现其用处，笔者并未安装
 #### B. 注意：
-	书籍Ninject.Web.Common.cs自动加载为问题在网上有安装失败的现象，可全部复制下文C中的命令进行安装
-	其中EntityFramework可不指定版本；Bootstrap以自己熟悉程度选择3/4/5/mdb5等版本；一可以选择Layui等前端框架
+	书籍Ninject.Web.Common.cs自动加载值App_Start的问题在网上有安装失败的现象，可全部复制下文C中的命令进行安装
+	其中EntityFramework可不指定版本；Bootstrap以自己熟悉程度选择3/4/5/mdb5等版本；实际开发时亦可以选择Layui等前端框架
 #### C. 命令：
-	Install-package EntityFramework -projectname SportsStore.Domain
-	
-	Install-package Microsoft.Aspnet.Mvc -version 5.2.7 -projectname SportsStore.Shared
-
 	Install-package EntityFramework -projectname SportsStore.WebUI
 	Install-package Moq -version 4.18.0 -projectname SportsStore.WebUI
 	Install-package Castle.Core -version 5.0.0 -projectname SportsStore.WebUI
 	Install-package Ninject.Web.Common -version 3.0.0.7 -projectname SportsStore.WebUI
 	Install-package Bootstrap -version 3.4.1 -projectname SportsStore.WebUI
+
+	Install-package EntityFramework -projectname SportsStore.Domain
+	
+	Install-package Microsoft.Aspnet.Mvc -version 5.2.7 -projectname SportsStore.Shared
 	
 	Install-package Moq -version 4.18.0 -projectname SportsStore.UnitTests
 	Install-package Ninject.Web.Common -version 3.0.0.7 -projectname SportsStore.UnitTests
 	Install-package Microsoft.Aspnet.Mvc -version 5.2.7 -projectname SportsStore.UnitTests
-
 
 	暂时不安装
 	* Install-package Ninject.MVC3 -version 3.0.0.6 -projectname SportsStore.WebUI
@@ -57,11 +56,11 @@
 	具体实现参考:
 [IProductRepository.cs](https://github.com/ChuanmingXie/AspNetWeb_Master/blob/master/SportsStore.Domain/Abstract/IProductRepository.cs "IProductRepository.cs")
 	
-	完善DI容器解析类
+	完善DI容器解析类 NinjectDepedencyResolver.cs
 	具体实现参考:
 [NinjectDepedencyResolver.cs](https://github.com/ChuanmingXie/AspNetWeb_Master/blob/master/SportsStore.WebUI/Infrastructure/NinjectDepedencyResolver.cs "NinjectDepedencyResolver.cs")
 	
-	注册DI容器解析
+	注册DI容器解析 NinjectWebCommon.cs
 	具体实现参考:
 [NinjectWebCommon.cs](https://github.com/ChuanmingXie/AspNetWeb_Master/blob/master/SportsStore.WebUI/App_Start/NinjectWebCommon.cs "NinjectWebCommon.cs")
 	
@@ -84,7 +83,7 @@
 		kernel.Bind<IProductRepository>().ToConstant(mock.Object);
 	}
 #### D. 视图数据渲染与呈现
-	建立HomeController,通过构造函数注入抽象存储库，在Index动作方法中返回视图所要渲染的数据
+	建立HomeController,通过构造函数注入抽象存储库，在Index动作方法中返回视图所要渲染的数据。
 	public class HomeController : Controller
 	{
 		private readonly IProductRepository repository;
@@ -99,6 +98,8 @@
 		}
 	}
 	在视图中引用模型，并从模型中通过foreach剪辑出相关数据
+	在视图添加过程中，不必教条式的添加，可以自主决定是否使用布局页。
+	笔者在此处使用了布局页并在_Layout.cshtml中修改了有关jQuery和Bootstrap样式导入模板，因其和实际资源目录存在差异
 	@using SportsStore.Domain.Entities
 	@model IEnumerable<Product>
 	...
