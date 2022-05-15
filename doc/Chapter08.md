@@ -242,12 +242,20 @@
         defaults: new { Controller = "Home", action = "Index" }
     );
 #### B. 使用分部视图
-[Index](https://github.com/ChuanmingXie/AspNetWeb_Master/blob/master/SportsStore.WebUI/Views/Home/Index.cshtml "调用分部视图")
+[Index](https://github.com/ChuanmingXie/AspNetWeb_Master/blob/master/SportsStore.WebUI/Views/Home/Index.cshtml "调用分部视图")<br>
 [ProductSummary](https://github.com/ChuanmingXie/AspNetWeb_Master/blob/master/SportsStore.WebUI/Views/Home/ProductSummary.cshtml "分部视图")
 
 ## 3. 导航功能
 ### i. 过滤产品列表
 ### ii. 改进URL路由
+    routes.MapRoute(null, "", new { controller = "Home", action = "Index", category = (string)null, page = 1 });
+    routes.MapRoute(null, "Page{page}", new { controller = "Home", action = "Index", category = (string)null }, new { page = @"\d+" });
+    routes.MapRoute(null, "category", new { controller = "Home", action = "Index", page = 1 });
+    routes.MapRoute(null, "{category}/Page{page}", new { controller = "Home", action = "Index" }, new { page = @"\d+" });
+
 ### iii. 建立菜单
+    在进行菜单及案例的测试时会出现如下的报错
+    缺少编译器要求的成员“Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfo.Create”
+    此时需要执行 添加引用 -> 程序集 -> 框架 Miscrosoft.CSharp 进行引用的添加
 ### vi. 修正页面计数
 
