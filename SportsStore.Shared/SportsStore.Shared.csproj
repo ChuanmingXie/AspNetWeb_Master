@@ -69,9 +69,11 @@
   <ItemGroup>
     <Compile Include="CustomHtml\PagingHelpers.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ShopCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\PagingInfo.cs" />
     <Compile Include="ViewModel\ProductsListViewModel.cs" />
+    <Compile Include="ViewModel\ShopCartIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />

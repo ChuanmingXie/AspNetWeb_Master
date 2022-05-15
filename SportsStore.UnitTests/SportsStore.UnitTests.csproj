@@ -98,6 +98,7 @@
     <Compile Include="Controllers\HomeControllerTests.cs" />
     <Compile Include="Controllers\MenuControllerTests.cs" />
     <Compile Include="CustomHtml\PagingHelpersTests.cs" />
+    <Compile Include="Entities\ShopCartTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

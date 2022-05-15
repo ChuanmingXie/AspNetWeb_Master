@@ -1,0 +1,43 @@
+﻿@model SportsStore.Shared.ViewModel.ShopCartIndexViewModel
+
+@{
+    ViewBag.Title = "购物车";
+}
+
+<h2>购物车</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>产品</th>
+            <th class="text-center">数量</th>
+            <th class="text-right">单价</th>
+            <th class="text-right">小计</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.ShopCart.Lines)
+        {
+        <tr>
+            <td class="text-left">@line.Product.Name</td>
+            <td class="text-center">@line.Quantity</td>
+            <td class="text-right">@line.Product.Price</td>
+            <td class="text-right">
+                @((line.Quantity*line.Product.Price).ToString("c"))
+            </td>
+        </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">总计:</td>
+            <td class="text-right">
+                @Model.ShopCart.ComputeTotalValue().ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">继续选购</a>
+</div>
+
