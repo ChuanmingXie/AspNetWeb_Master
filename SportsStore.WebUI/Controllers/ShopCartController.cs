@@ -18,47 +18,57 @@ namespace SportsStore.WebUI.Controllers
             this.repository = repository;
         }
 
-        public RedirectToRouteResult AddToShopCart(int productID, string returnUrl)
+        public RedirectToRouteResult AddToShopCart(ShopCart shopCart, int productID, string returnUrl)
         {
             Product product = repository.Products
                 .FirstOrDefault(p => p.ProductID == productID);
             if (product != null)
             {
-                GetShopCart().AddItemProduct(product, 1);
+                shopCart.AddItemProduct(product, 1);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectToRouteResult RemoveFormShopCart(int productID, string returnUrl)
+        public RedirectToRouteResult RemoveFormShopCart(ShopCart shopCart, int productID, string returnUrl)
         {
             Product product = repository.Products
                 .FirstOrDefault(p => p.ProductID == productID);
             if (product != null)
             {
-                GetShopCart().RemoveLine(product);
+                shopCart.RemoveLine(product);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        private ShopCart GetShopCart()
-        {
-            ShopCart shopCart = (ShopCart)Session["ShopCart"];
-            if (shopCart == null)
-            {
-                shopCart = new ShopCart();
-                Session["ShopCart"] = shopCart;
-            }
-            return shopCart;
-        }
+        //private ShopCart GetShopCart()
+        //{
+        //    ShopCart shopCart = (ShopCart)Session["ShopCart"];
+        //    if (shopCart == null)
+        //    {
+        //        shopCart = new ShopCart();
+        //        Session["ShopCart"] = shopCart;
+        //    }
+        //    return shopCart;
+        //}
 
         // GET: ShopCart
-        public ViewResult Index(string returnUrl)
+        public ViewResult Index(ShopCart shopCart, string returnUrl)
         {
             return View(new ShopCartIndexViewModel
             {
-                ShopCart = GetShopCart(),
+                ShopCart = shopCart,
                 ReturnUrl = returnUrl
             });
+        }
+
+        public PartialViewResult ShopCartSummary(ShopCart shopCart)
+        {
+            return PartialView(shopCart);
+        }
+
+        public ViewResult CheckOut()
+        {
+            return View(new ShoppingDetails());
         }
     }
 }

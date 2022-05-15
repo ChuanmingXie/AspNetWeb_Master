@@ -18,6 +18,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("高光运动", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.Action("ShopCartSummary","ShopCart")
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

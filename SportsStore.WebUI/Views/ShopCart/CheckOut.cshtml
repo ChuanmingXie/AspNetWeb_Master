@@ -1,0 +1,37 @@
+﻿@model SportsStore.Shared.Entities.ShoppingDetails
+
+@{
+    ViewBag.Title = "商品结算";
+}
+
+<h2>结算信息</h2>
+<p>请输入您的个人信息,火速安排发货！</p>
+@using (@Html.BeginForm())
+{
+    <h3>发货至</h3>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+    </div>
+    <h3>地址</h3>
+    foreach (var property in ViewData.ModelMetadata.Properties)
+    {
+        if (property.PropertyName != "Name" && property.PropertyName != "GiftWrap")
+        {
+            <div class="form-group">
+                <label>@(property.DisplayName ?? property.PropertyName)</label>
+                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+            </div>
+        }
+    }
+    <h3>选项</h3>
+    <div class="checkbox">
+        <label>@Html.EditorFor(x => x.GiftWrap)</label>
+        礼盒包装
+    </div>
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="完成提交" />
+    </div>
+}
+

@@ -1,0 +1,12 @@
+﻿@model SportsStore.Shared.Entities.ShopCart
+
+<div class="navbar-right">
+    @Html.ActionLink("立即购买", "CheckOut", "ShopCart"
+    , new { returnUrl = Request.Url.PathAndQuery }
+    , new { @class = "btn btn-default navbar-btn" })
+</div>
+<div class="navbar-text navbar-right">
+    <b>已有商品:</b>
+    @Model.Lines.Sum(x=>x.Quantity) 项
+    @Model.ComputeTotalValue().ToString("c")
+</div>

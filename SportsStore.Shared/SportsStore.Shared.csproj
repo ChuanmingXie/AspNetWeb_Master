@@ -70,6 +70,7 @@
     <Compile Include="CustomHtml\PagingHelpers.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ShopCart.cs" />
+    <Compile Include="Entities\ShoppingDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\PagingInfo.cs" />
     <Compile Include="ViewModel\ProductsListViewModel.cs" />

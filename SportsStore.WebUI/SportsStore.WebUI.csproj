@@ -143,10 +143,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\ShopCartController_NoBinder.cs" />
     <Compile Include="Controllers\ShopCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\ModelBinder\ShopCartBinder.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -162,6 +164,9 @@
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Home\IndexNoCategory.cshtml" />
     <Content Include="Views\ShopCart\Index.cshtml" />
+    <Content Include="Views\ShopCart\ShopCartSummary.cshtml" />
+    <Content Include="Views\ShopCart\CheckOut.cshtml" />
+    <Content Include="Views\ShopCart\CheckOut_bak.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -24,6 +24,14 @@
             <td class="text-right">
                 @((line.Quantity*line.Product.Price).ToString("c"))
             </td>
+            <td>
+                @using(Html.BeginForm("RemoveFormShopCart", "ShopCart"))
+                {
+                    @Html.Hidden("ProductId",line.Product.ProductID)
+                    @Html.HiddenFor(x=>x.ReturnUrl)
+                    <input class="btn btn-sm btn-warning" type="submit" value="移除"/>
+                }
+            </td>
         </tr>
         }
     </tbody>
@@ -39,5 +47,6 @@
 
 <div class="text-center">
     <a class="btn btn-primary" href="@Model.ReturnUrl">继续选购</a>
+    @Html.ActionLink("立即购买", "CheckOut", null, new {@class="btn btn-primary"})
 </div>
 
