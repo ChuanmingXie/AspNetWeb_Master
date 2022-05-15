@@ -17,7 +17,7 @@ using Moq;
 using Ninject;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Concrete;
-using SportsStore.Domain.Entities;
+using SportsStore.Shared.Entities;
 
 namespace SportsStore.WebUI.Infrastructure
 {

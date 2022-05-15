@@ -5,7 +5,7 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
     using SportsStore.Domain.Concrete;
-    using SportsStore.Domain.Entities;
+    using SportsStore.Shared.Entities;
 
     internal sealed class Configuration : DbMigrationsConfiguration<DbProductContext>
     {

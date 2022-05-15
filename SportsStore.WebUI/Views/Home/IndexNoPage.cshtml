@@ -1,0 +1,15 @@
+﻿@ustomHties
+@model IEnumerable<Product>
+
+@{
+    ViewBag.Title = "主页";
+}
+
+<h2>Index</h2>
+
+@foreach (var p in Model)
+{
+    <h3>@p.Name</h3>
+    @p.Description
+    <h4>@p.Price.ToString("c")</h4>
+}

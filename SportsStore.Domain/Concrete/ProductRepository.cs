@@ -12,7 +12,7 @@
 ******************************************************************************/
 using System.Collections.Generic;
 using SportsStore.Domain.Abstract;
-using SportsStore.Domain.Entities;
+using SportsStore.Shared.Entities;
 
 namespace SportsStore.Domain.Concrete
 {

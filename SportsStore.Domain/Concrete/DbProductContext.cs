@@ -10,7 +10,7 @@
 *作用描述:<FUNCTION>
 *Copyright @ chuanming 2022. All rights reserved
 ******************************************************************************/
-using SportsStore.Domain.Entities;
+using SportsStore.Shared.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

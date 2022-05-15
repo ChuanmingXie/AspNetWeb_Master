@@ -154,7 +154,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Home\IndexNoPage.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\ProductSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -169,6 +171,10 @@
     <ProjectReference Include="..\SportsStore.Domain\SportsStore.Domain.csproj">
       <Project>{0B239462-DE5A-4B8E-8804-1E70AD3DCB15}</Project>
       <Name>SportsStore.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportsStore.Shared\SportsStore.Shared.csproj">
+      <Project>{4b7b89fa-4522-41bd-8d41-398536e169a5}</Project>
+      <Name>SportsStore.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

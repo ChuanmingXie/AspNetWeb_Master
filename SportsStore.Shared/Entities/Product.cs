@@ -13,7 +13,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SportsStore.Domain.Entities
+namespace SportsStore.Shared.Entities
 {
     public class Product
     {

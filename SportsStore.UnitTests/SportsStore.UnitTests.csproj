@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Controllers\HomeControllerTests.cs" />
+    <Compile Include="CustomHtml\PagingHelpersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +105,10 @@
     <ProjectReference Include="..\SportsStore.Domain\SportsStore.Domain.csproj">
       <Project>{0b239462-de5a-4b8e-8804-1e70ad3dcb15}</Project>
       <Name>SportsStore.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportsStore.Shared\SportsStore.Shared.csproj">
+      <Project>{4b7b89fa-4522-41bd-8d41-398536e169a5}</Project>
+      <Name>SportsStore.Shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\SportsStore.WebUI\SportsStore.WebUI.csproj">
       <Project>{7a8779c1-c823-4837-a516-043b49ee86b0}</Project>
