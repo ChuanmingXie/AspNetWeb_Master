@@ -167,6 +167,7 @@
     <Content Include="Views\ShopCart\ShopCartSummary.cshtml" />
     <Content Include="Views\ShopCart\CheckOut.cshtml" />
     <Content Include="Views\ShopCart\CheckOut_bak.cshtml" />
+    <Content Include="Views\ShopCart\Completed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

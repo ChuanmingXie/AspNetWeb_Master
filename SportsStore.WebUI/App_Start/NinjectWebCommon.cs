@@ -4,12 +4,16 @@
 namespace SportsStore.WebUI.App_Start
 {
     using System;
+    using System.Configuration;
     using System.Web;
     using System.Web.Mvc;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
     using Ninject.Web.Common;
+    using SportsStore.Shared.Common;
+    using SportsStore.Shared.DataInterface;
+    using SportsStore.Shared.Services;
 
     public static class NinjectWebCommon
     {
@@ -54,6 +58,13 @@ namespace SportsStore.WebUI.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             DependencyResolver.SetResolver(new Infrastructure.NinjectDependencyResolver(kernel));
+
+            EmailSettings emailSettings = new EmailSettings
+            {
+                WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteFile"] ?? "false")
+            };
+            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>().WithConstructorArgument("settings", emailSettings);
+            //kernel.Bind<IOrderProcessor>().To<EmailOutlookProcessor>().WithConstructorArgument("settings", emailSettings);            
         }
     }
 }

@@ -8,6 +8,7 @@
 <p>请输入您的个人信息,火速安排发货！</p>
 @using (@Html.BeginForm())
 {
+    @Html.ValidationSummary();
     <h3>发货至</h3>
     <div class="form-group">
         @Html.LabelFor(x => x.Name, htmlAttributes: new { @class = "control-label" })
@@ -22,6 +23,7 @@
             <div class="form-group">
                 <label>@(property.DisplayName ?? property.PropertyName)</label>
                 @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                @Html.ValidationMessage(property.PropertyName, "", new { @class = "text-danger" })
             </div>
         }
     }

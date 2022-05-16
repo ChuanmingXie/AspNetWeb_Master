@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SportsStore.Domain.Abstract;
+using SportsStore.Shared.DataInterface;
 using SportsStore.Shared.Entities;
 using SportsStore.Shared.ViewModel;
 using SportsStore.WebUI.Controllers;
@@ -38,7 +39,7 @@ namespace SportsStore.WebUI.Controllers.Tests
                 new Product{ProductID=1,Name="P1",Category="Apples"},
             }.AsQueryable());
             ShopCart cart = new ShopCart();
-            ShopCartController controller = new ShopCartController(mock.Object);
+            ShopCartController controller = new ShopCartController(mock.Object,null);
             //动作
             controller.AddToShopCart(cart, 1, null);
             //断言
@@ -56,7 +57,7 @@ namespace SportsStore.WebUI.Controllers.Tests
                 new Product{ProductID=1,Name="P1",Category="Apples"}
             }.AsQueryable());
             ShopCart cart = new ShopCart();
-            ShopCartController target = new ShopCartController(mock.Object);
+            ShopCartController target = new ShopCartController(mock.Object, null);
             //动作
             RedirectToRouteResult result = target.AddToShopCart(cart, 2, "myUrl");
             //断言
@@ -69,12 +70,62 @@ namespace SportsStore.WebUI.Controllers.Tests
         {
             //准备
             ShopCart cart = new ShopCart();
-            ShopCartController target = new ShopCartController(null);
+            ShopCartController target = new ShopCartController(null, null);
             //动作
             ShopCartIndexViewModel result = (ShopCartIndexViewModel)target.Index(cart, "myUrl").ViewData.Model;
             //断言
             Assert.AreEqual(result.ShopCart, cart);
             Assert.AreEqual(result.ReturnUrl, "myUrl");
         }
+
+        [TestMethod()]
+        public void Cannot_CheckOut_Empty_Cart()
+        {
+            //准备
+            Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
+            ShopCart cart = new ShopCart();
+            ShoppingDetails shoppingDetails = new ShoppingDetails();
+            ShopCartController target = new ShopCartController(null, mock.Object);
+            //动作
+            ViewResult result = target.CheckOut(cart, shoppingDetails);
+            //断言
+            mock.Verify(m => m.ProcessOrder(It.IsAny<ShopCart>(), It.IsAny<ShoppingDetails>()), Times.Never());
+            Assert.AreEqual("",result.ViewName);
+            Assert.AreEqual(false, result.ViewData.ModelState.IsValid);
+        }
+
+        [TestMethod]
+        public void Cannot_CheckOut_Invalid_ShoppingDetails()
+        {
+            //准备
+            Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
+            ShopCart cart = new ShopCart();
+            cart.AddItemProduct(new Product(), 1);
+            ShopCartController target = new ShopCartController(null, mock.Object);
+            target.ModelState.AddModelError("error", "error");
+            //动作
+            ViewResult result = target.CheckOut(cart, new ShoppingDetails());
+            //断言
+            mock.Verify(m => m.ProcessOrder(It.IsAny<ShopCart>(), It.IsAny<ShoppingDetails>()), Times.Never());
+            Assert.AreEqual("", result.ViewName);
+            Assert.AreEqual(false, result.ViewData.ModelState.IsValid);
+        }
+
+        [TestMethod]
+        public void Can_CheckOut_And_Sumbit_Order()
+        {
+            //准备
+            Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
+            ShopCart cart = new ShopCart();
+            cart.AddItemProduct(new Product(), 1);
+            ShopCartController target = new ShopCartController(null, mock.Object);
+            //动作
+            ViewResult result = target.CheckOut(cart, new ShoppingDetails());
+            //断言
+            mock.Verify(m => m.ProcessOrder(It.IsAny<ShopCart>(), It.IsAny<ShoppingDetails>()), Times.Once());
+            Assert.AreEqual("Completed", result.ViewName);
+            Assert.AreEqual(true, result.ViewData.ModelState.IsValid);
+        }
+
     }
 }
