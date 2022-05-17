@@ -9,17 +9,24 @@ using System.Web;
 using System.Web.Mvc;
 using SportsStore.Domain.Concrete;
 using SportsStore.Shared.Entities;
+using SportsStore.Domain.Abstract;
 
 namespace SportsStore.WebUI.Areas.BackendAdmin.Controllers
 {
     public class ProductsController : Controller
     {
         private DbProductContext db = new DbProductContext();
+        private IProductRepository repository;
+
+        public ProductsController(IProductRepository repository)
+        {
+            this.repository = repository;
+        }
 
         // GET: BackendAdmin/Products
-        public async Task<ActionResult> Index()
+        public ViewResult Index()
         {
-            return View(await db.Products.ToListAsync());
+            return View(repository.Products);
         }
 
         // GET: BackendAdmin/Products/Details/5
@@ -38,40 +45,17 @@ namespace SportsStore.WebUI.Areas.BackendAdmin.Controllers
         }
 
         // GET: BackendAdmin/Products/Create
-        public ActionResult Create()
+        public ViewResult Create()
         {
-            return View();
+            return View("Edit",new Product());
         }
 
-        // POST: BackendAdmin/Products/Create
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性。有关
-        // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProductID,Name,Description,Price,Category")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Products.Add(product);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
 
-            return View(product);
-        }
 
         // GET: BackendAdmin/Products/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ViewResult Edit(int productID)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = await db.Products.FindAsync(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
+            Product product = repository.Products.FirstOrDefault(p => p.ProductID == productID);
             return View(product);
         }
 
@@ -80,12 +64,13 @@ namespace SportsStore.WebUI.Areas.BackendAdmin.Controllers
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProductID,Name,Description,Price,Category")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,Name,Description,Price,Category")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                //db.Entry(product).State = EntityState.Modified;
+                repository.SaveProduct(product);
+                TempData["message"] = $"{product.Name}已更新";
                 return RedirectToAction("Index");
             }
             return View(product);

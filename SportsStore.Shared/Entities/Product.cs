@@ -12,27 +12,33 @@
 ******************************************************************************/
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace SportsStore.Shared.Entities
 {
     public class Product
     {
+        [HiddenInput(DisplayValue =false)]
         public int ProductID { get; set; }
 
         [Display(Name = "名称")]
+        [Required(ErrorMessage ="请输入产品名称")]
         [StringLength(512)]
         public string Name { get; set; }
 
         [Display(Name = "描述")]
         [StringLength(int.MaxValue)]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         [Display(Name = "价格")]
+        [Required,Range(0.01,double.MaxValue, ErrorMessage ="请输入有效的价格")]
         [DataType(DataType.Currency)]
         //[Column(TypeName = "decimal(18,2)")] EF Core才支持
         public decimal Price { get; set; }
 
         [Display(Name = "分类")]
+        [Required(ErrorMessage ="请指定产品分类")]
         [StringLength(60)]
         public string Category { get; set; }
 
