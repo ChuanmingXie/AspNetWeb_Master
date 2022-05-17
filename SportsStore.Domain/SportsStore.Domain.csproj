@@ -83,6 +83,10 @@
     <Compile Include="Migrations\202205141039211_InitialServer.designer.cs">
       <DependentUpon>202205141039211_InitialServer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205171603432_InitialAdmin.cs" />
+    <Compile Include="Migrations\202205171603432_InitialAdmin.designer.cs">
+      <DependentUpon>202205171603432_InitialAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -96,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205141039211_InitialServer.resx">
       <DependentUpon>202205141039211_InitialServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205171603432_InitialAdmin.resx">
+      <DependentUpon>202205171603432_InitialAdmin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
