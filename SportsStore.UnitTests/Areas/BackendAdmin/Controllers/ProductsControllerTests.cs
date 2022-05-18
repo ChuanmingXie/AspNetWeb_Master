@@ -1,9 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using SportsStore.Domain.Abstract;
-using SportsStore.Shared.Entities;
-using SportsStore.WebUI.Areas.BackendAdmin.Controllers;
-/*****************************************************************************
+﻿/*****************************************************************************
 *项目名称:SportsStore.UnitTests.Areas.BackendAdmin.Controllers
 *项目描述:
 *类 名 称:ProductsControllerTests
@@ -15,12 +10,13 @@ using SportsStore.WebUI.Areas.BackendAdmin.Controllers;
 *作用描述:<FUNCTION>
 *Copyright @ chuanming 2022. All rights reserved
 ******************************************************************************/
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using SportsStore.Domain.Abstract;
+using SportsStore.Shared.Entities;
 
 namespace SportsStore.WebUI.Areas.BackendAdmin.Controllers.Tests
 {
@@ -101,7 +97,7 @@ namespace SportsStore.WebUI.Areas.BackendAdmin.Controllers.Tests
 
 
         [TestMethod()]
-        public void Cannot_Save_InValid_Changes() 
+        public void Cannot_Save_InValid_Changes()
         {
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             ProductsController target = new ProductsController(mock.Object);
@@ -112,6 +108,24 @@ namespace SportsStore.WebUI.Areas.BackendAdmin.Controllers.Tests
             //断言
             mock.Verify(m => m.SaveProduct(It.IsAny<Product>()), Times.Never());
             Assert.IsInstanceOfType(result, typeof(ViewResult));
+        }
+
+        [TestMethod()]
+        public void Can_Delete_Valid_Products()
+        {
+            //准备
+            Product product = new Product { ProductID = 2, Name = "Test" };
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[]{
+                new Product { ProductID=1,Name="O1"},
+                product,
+                new Product { ProductID=3,Name="O3"},
+            });
+            ProductsController target = new ProductsController(mock.Object);
+            //动作
+            target.Delete(product.ProductID);
+            //断言
+            mock.Verify(m => m.DeleteProduct(product.ProductID));
         }
     }
 }

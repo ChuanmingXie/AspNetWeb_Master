@@ -50,8 +50,6 @@ namespace SportsStore.WebUI.Areas.BackendAdmin.Controllers
             return View("Edit",new Product());
         }
 
-
-
         // GET: BackendAdmin/Products/Edit/5
         public ViewResult Edit(int productID)
         {
@@ -76,31 +74,19 @@ namespace SportsStore.WebUI.Areas.BackendAdmin.Controllers
             return View(product);
         }
 
-        // GET: BackendAdmin/Products/Delete/5
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = await db.Products.FindAsync(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
-
         // POST: BackendAdmin/Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult Delete(int productID)
         {
-            Product product = await db.Products.FindAsync(id);
-            db.Products.Remove(product);
-            await db.SaveChangesAsync();
+            Product deleteProduct = repository.DeleteProduct(productID);
+            if (deleteProduct != null)
+            {
+                TempData["message"] = $"{deleteProduct.Name}已经被删除";
+            }
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {

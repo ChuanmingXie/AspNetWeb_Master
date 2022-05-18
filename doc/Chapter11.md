@@ -35,6 +35,17 @@
 ### v. Delete功能
 #### A. Delete控制器动作
 #### B. 测试控制器动作
+#### C. 删除操作视图
+    Server Error in '/' Application.
+    The required anti-forgery form field "__RequestVerificationToken" is not present.
+    Description: An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+    Exception Details: System.Web.Mvc.HttpAntiForgeryException: The required anti-forgery form field "__RequestVerificationToken" is not present.
+
+    Source Error:
+
+    An unhandled exception was generated during the execution of the current web request. Information regarding the origin and location of the exception can be identified using the exception stack trace below.
+
 
 ## 2. 用户登录验证
 ## 3. 商品图片数据管理

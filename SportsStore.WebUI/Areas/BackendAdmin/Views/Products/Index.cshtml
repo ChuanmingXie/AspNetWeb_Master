@@ -28,6 +28,7 @@
                     <td class="text-center">
                         @using (Html.BeginForm("Delete", "Products"))
                         {
+                            @Html.AntiForgeryToken()
                             @Html.Hidden("ProductID", item.ProductID)
                             <input type="submit" class="btn btn-default btn-xs" value="删除" />
                         }
@@ -36,7 +37,7 @@
             }
         </table>
     </div>
-    <div>
+    <div class="text-center">
         @Html.ActionLink("新建", "Create", null, new { @class = "btn btn-default" })
     </div>
 </div>
