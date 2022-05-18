@@ -143,6 +143,7 @@
     <Content Include="Areas\BackendAdmin\Views\Products\Details.cshtml" />
     <Content Include="Areas\BackendAdmin\Views\Products\Edit.cshtml" />
     <Content Include="Areas\BackendAdmin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\BackendAdmin\Views\Account\Login.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -161,6 +162,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\BackendAdmin\BackendAdminAreaRegistration.cs" />
+    <Compile Include="Areas\BackendAdmin\Controllers\AccountController.cs" />
     <Compile Include="Areas\BackendAdmin\Controllers\ProductsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />

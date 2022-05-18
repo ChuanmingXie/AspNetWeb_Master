@@ -1,0 +1,26 @@
+﻿@model SportsStore.Shared.ViewModel.LoginVIewModel
+
+@{
+    ViewBag.Title = "用户登录";
+}
+
+<h2>用户登录</h2>
+<div>
+    <p class="lead">请登录后台管理系统</p>
+    <p>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label>用户名</label>
+                @Html.TextAreaFor(m => m.UserName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>用户名</label>
+                @Html.TextAreaFor(m => m.UserName, new { @class = "form-control" })
+            </div>
+            <input type="submit" class="btn btn-primary" value="登　录"/>
+        }
+    </p>
+</div>
+

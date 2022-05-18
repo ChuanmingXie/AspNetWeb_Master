@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Areas\BackendAdmin\Controllers\AccountControllerTests.cs" />
     <Compile Include="Areas\BackendAdmin\Controllers\ProductsControllerTests.cs" />
     <Compile Include="Controllers\HomeControllerTests.cs" />
     <Compile Include="Controllers\MenuControllerTests.cs" />

@@ -13,9 +13,9 @@ using SportsStore.Domain.Abstract;
 
 namespace SportsStore.WebUI.Areas.BackendAdmin.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
-        private DbProductContext db = new DbProductContext();
         private IProductRepository repository;
 
         public ProductsController(IProductRepository repository)
@@ -30,24 +30,16 @@ namespace SportsStore.WebUI.Areas.BackendAdmin.Controllers
         }
 
         // GET: BackendAdmin/Products/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ViewResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = await db.Products.FindAsync(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
+            Product product = repository.Products.FirstOrDefault(x => x.ProductID == id);
             return View(product);
         }
 
         // GET: BackendAdmin/Products/Create
         public ViewResult Create()
         {
-            return View("Edit",new Product());
+            return View("Edit", new Product());
         }
 
         // GET: BackendAdmin/Products/Edit/5
@@ -92,7 +84,7 @@ namespace SportsStore.WebUI.Areas.BackendAdmin.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }

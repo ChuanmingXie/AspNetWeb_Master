@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="CustomHtml\PagingHelpers.cs" />
     <Compile Include="Common\EmailSettings.cs" />
+    <Compile Include="DataInterface\IAuthProvider.cs" />
     <Compile Include="DataInterface\IOrderProcessor.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ShopCart.cs" />
@@ -80,6 +81,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmailOrderProcessor.cs" />
     <Compile Include="Services\EmailOutlookProcessor.cs" />
+    <Compile Include="Services\FormsAuthProvider.cs" />
+    <Compile Include="ViewModel\LoginVIewModel.cs" />
     <Compile Include="ViewModel\PagingInfo.cs" />
     <Compile Include="ViewModel\ProductsListViewModel.cs" />
     <Compile Include="ViewModel\ShopCartIndexViewModel.cs" />

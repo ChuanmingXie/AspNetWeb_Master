@@ -65,6 +65,7 @@ namespace SportsStore.WebUI.App_Start
             };
             kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>().WithConstructorArgument("settings", emailSettings);
             //kernel.Bind<IOrderProcessor>().To<EmailOutlookProcessor>().WithConstructorArgument("settings", emailSettings);            
+            kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
         }
     }
 }
