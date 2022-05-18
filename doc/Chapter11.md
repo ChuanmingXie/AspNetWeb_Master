@@ -31,6 +31,8 @@
 ### vi. Add功能
 #### A. Add控制器动作
 #### B. 视图
+    //HtmlHelper.ClientValidationEnabled = false;
+    //HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
 
 ### v. Delete功能
 #### A. Delete控制器动作
@@ -48,5 +50,30 @@
 
 
 ## 2. 用户登录验证
+    Configuration Error
+    Description: An error occurred during the processing of a configuration file required to service this request. Please review the specific error details below and modify your configuration file appropriately.
+
+    Parser Error Message: It is an error to use a section registered as allowDefinition='MachineToApplication' beyond application level.  This error can be caused by a virtual directory not being configured as an application in IIS.
+
+    Source Error:
+    
+..\SportsStore.WebUI\Areas\BackendAdmin\Views\web.config
+
+..\SportsStore.WebUI\Web.config
+    <system.web>
+		<compilation debug="true" targetFramework="4.8" />
+		<httpRuntime targetFramework="4.8" />
+		<globalization culture="zh-cn" uiCulture="zh-cn"/>
+		<!--<globalization culture="en-us" uiCulture="en-us" />-->
+
+		<authentication mode="Forms">
+			<forms loginUrl="~/BackendAdmin/Account/Login" timeout="2880">
+				<credentials passwordFormat="Clear">
+					<user name="admin" password="secret"/>
+				</credentials>
+			</forms>
+		</authentication>
+	</system.web>
+
 ## 3. 商品图片数据管理
 
