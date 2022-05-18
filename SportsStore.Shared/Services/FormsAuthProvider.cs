@@ -24,7 +24,9 @@ namespace SportsStore.Shared.Services
     {
         public bool Authenticate(string userName, string password)
         {
+#pragma warning disable CS0618 // 类型或成员已过时
             bool result = FormsAuthentication.Authenticate(userName, password);
+#pragma warning restore CS0618 // 类型或成员已过时
             if (result)
                 FormsAuthentication.SetAuthCookie(userName, false);
             return result;

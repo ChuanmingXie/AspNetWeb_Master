@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using SportsStore.Domain.Abstract;
+using SportsStore.Shared.Entities;
 using SportsStore.Shared.ViewModel;
 
 namespace SportsStore.WebUI.Controllers
@@ -63,5 +64,6 @@ namespace SportsStore.WebUI.Controllers
             };
             return View(model);
         }
+
     }
 }

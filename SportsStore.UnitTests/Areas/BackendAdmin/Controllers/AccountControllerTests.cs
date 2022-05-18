@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using SportsStore.Domain.Abstract;
 using SportsStore.Shared.DataInterface;
+using SportsStore.Shared.Entities;
 using SportsStore.Shared.ViewModel;
 using SportsStore.WebUI.Areas.BackendAdmin.Controllers;
 /*****************************************************************************
@@ -63,6 +65,48 @@ namespace SportsStore.WebUI.Areas.BackendAdmin.Controllers.Tests
             //断言
             Assert.IsInstanceOfType(result, typeof(ViewResult));
             Assert.IsFalse(((ViewResult)result).ViewData.ModelState.IsValid);
+        }
+
+
+        [TestMethod()]
+        public void Can_Retrieve_Image_Data()
+        {
+            Product product = new Product
+            {
+                ProductID = 2,
+                Name = "Test",
+                ImageData = new byte[] { },
+                ImageMimeType = "image/png"
+            };
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[]
+            {
+                new Product{ProductID=1,Name="P1"},
+                product,
+                new Product{ProductID=3,Name="P3"},
+            }.AsQueryable());
+
+            ProductsController target = new ProductsController(mock.Object);
+            ActionResult result = target.GetImage(2);
+            //断言
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(FileResult));
+            Assert.AreEqual(product.ImageMimeType, ((FileResult)result).ContentType);
+        }
+
+        [TestMethod()]
+        public void Cannot_Retrieve_Image_Data_For_InValid_ID()
+        {
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[]
+            {
+                new Product{ProductID=1,Name="P1"},
+                new Product{ProductID=2,Name="P2"},
+            }.AsQueryable());
+            ProductsController target = new ProductsController(mock.Object);
+            ActionResult result = target.GetImage(100);
+            //断言
+            Assert.IsNull(result);
         }
     }
 }

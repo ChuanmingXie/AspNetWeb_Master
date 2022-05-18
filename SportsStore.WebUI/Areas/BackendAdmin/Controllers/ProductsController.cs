@@ -29,6 +29,19 @@ namespace SportsStore.WebUI.Areas.BackendAdmin.Controllers
             return View(repository.Products);
         }
 
+        public FileContentResult GetImage(int productId)
+        {
+            Product product = repository.Products.FirstOrDefault(p => p.ProductID == productId);
+            if (product != null)
+            {
+                return File(product.ImageData, product.ImageMimeType);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         // GET: BackendAdmin/Products/Details/5
         public ViewResult Details(int? id)
         {
@@ -54,10 +67,16 @@ namespace SportsStore.WebUI.Areas.BackendAdmin.Controllers
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,Name,Description,Price,Category")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,Name,Description,Price,Category")] Product product,HttpPostedFileBase image=null)
         {
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    product.ImageMimeType = image.ContentType;
+                    product.ImageData = new byte[image.ContentLength];
+                    image.InputStream.Read(product.ImageData, 0, image.ContentLength);
+                }
                 //db.Entry(product).State = EntityState.Modified;
                 repository.SaveProduct(product);
                 TempData["message"] = $"{product.Name}已更新";

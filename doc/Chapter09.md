@@ -153,5 +153,17 @@
 
 #### B. 完善购物车控制器
 #### C. 处理验证与提示
-    提交空购物车的错误验证
-    完成订单处理的友好提示
+##### a. 视图显示
+    foreach (var property in ViewData.ModelMetadata.Properties)
+    {
+        if (property.PropertyName != "Name" && property.PropertyName != "GiftWrap")
+        {
+            <div class="form-group">
+                <label>@(property.DisplayName ?? property.PropertyName)</label>
+                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                @Html.ValidationMessage(property.PropertyName, "", new { @class = "text-danger" })
+            </div>
+        }
+    }
+##### b. 提交空购物车的错误验证
+##### c. 完成订单处理的友好提示

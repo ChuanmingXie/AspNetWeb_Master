@@ -56,7 +56,7 @@
     Parser Error Message: It is an error to use a section registered as allowDefinition='MachineToApplication' beyond application level.  This error can be caused by a virtual directory not being configured as an application in IIS.
 
     Source Error:
-    
+
 ..\SportsStore.WebUI\Areas\BackendAdmin\Views\web.config
 
 ..\SportsStore.WebUI\Web.config
@@ -75,5 +75,6 @@
 		</authentication>
 	</system.web>
 
-## 3. 商品图片数据管理
+## 3. 商品图片数据管理-数据库扩展示例
+
 

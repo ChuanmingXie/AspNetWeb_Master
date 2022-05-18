@@ -6,6 +6,7 @@ using Moq;
 using SportsStore.Domain.Abstract;
 using SportsStore.Shared.Entities;
 using SportsStore.Shared.ViewModel;
+using System.Web.Mvc;
 /*****************************************************************************
 *项目名称:SportsStore.UnitTests.Controllers
 *项目描述:
