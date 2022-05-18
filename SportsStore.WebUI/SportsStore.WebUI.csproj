@@ -144,6 +144,7 @@
     <Content Include="Areas\BackendAdmin\Views\Products\Edit.cshtml" />
     <Content Include="Areas\BackendAdmin\Views\Products\Index.cshtml" />
     <Content Include="Areas\BackendAdmin\Views\Account\Login.cshtml" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
