@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsStore.Domain", "Sport
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsStore.Shared", "SportsStore.Shared\SportsStore.Shared.csproj", "{4B7B89FA-4522-41BD-8D41-398536E169A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc5.Knowleadge", "Mvc5.Knowleadge\Mvc5.Knowleadge.csproj", "{180885DC-0822-4574-AD28-5597BAEA3084}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc5.Knowleadge.Tests", "Mvc5.Knowleadge.Tests\Mvc5.Knowleadge.Tests.csproj", "{107D641A-3817-4F16-9683-4CF91A76EB33}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{4B7B89FA-4522-41BD-8D41-398536E169A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B7B89FA-4522-41BD-8D41-398536E169A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B7B89FA-4522-41BD-8D41-398536E169A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{180885DC-0822-4574-AD28-5597BAEA3084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{180885DC-0822-4574-AD28-5597BAEA3084}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{180885DC-0822-4574-AD28-5597BAEA3084}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{180885DC-0822-4574-AD28-5597BAEA3084}.Release|Any CPU.Build.0 = Release|Any CPU
+		{107D641A-3817-4F16-9683-4CF91A76EB33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{107D641A-3817-4F16-9683-4CF91A76EB33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{107D641A-3817-4F16-9683-4CF91A76EB33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{107D641A-3817-4F16-9683-4CF91A76EB33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
