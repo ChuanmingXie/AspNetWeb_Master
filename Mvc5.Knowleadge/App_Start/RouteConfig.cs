@@ -13,17 +13,24 @@ namespace Mvc5.Knowleadge
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("ShopSchema2", "Shop/OldAction", new { controller = "Home", action = "Index" });
+            routes.MapRoute("ShopSchema", "Shop/{action}", new { controller = "Home" });
+            routes.MapRoute("StaticExample2", "X{controller}/{action}");
+            routes.MapRoute("StaticExample1", "Public/{controller}/{action}", new { controller = "Home", action = "Index" });
+
             //方式1：
             //Route myRoute = new Route("{controller}/{action}", new MvcRouteHandler());
             //routes.Add("MyRoute", myRoute);
             //方式2：
-            routes.MapRoute("MyRoute", "{controller}/{action}");
+            routes.MapRoute("MyRoute", "{controller}/{action}", new { controller = "Home", action = "Index" });
+
+            
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new string[]{ "Mvc5.Knowleadge.Controllers" }
+                namespaces: new string[] { "Mvc5.Knowleadge.Controllers" }
             );
         }
     }

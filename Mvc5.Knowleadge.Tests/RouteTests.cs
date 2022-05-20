@@ -20,6 +20,25 @@ namespace Mvc5.Knowleadge.Tests
             //TestRouteFail("~/Admin"); 默认路由为删除可以匹配
         }
 
+        [TestMethod]
+        public void TestIncomingRoutesDefault()
+        {
+            TestRouteMatch("~/", "Home", "Index");  //无片段时,可以匹配到controller是Home;action是Index
+            TestRouteMatch("~/Customer", "Customer", "Index");
+            TestRouteMatch("~/Customer/List", "Customer", "List");
+            TestRouteFail("~/Customer/List/All/3");
+        }
+
+        [TestMethod]
+        public void TestIncomingRoutesStatic()
+        {
+            TestRouteMatch("~/XCustomer/List", "Customer", "List");
+            TestRouteMatch("~/Public/Customer/List", "Customer", "List");
+            TestRouteMatch("~/Shop/Index", "Home", "Index");
+            TestRouteMatch("~/Shop/OldAction", "Home", "Index");
+            TestRouteFail("~/Customer/List/All/3");
+        }
+
         private HttpContextBase CreateHttpContext(string targetUrl = null, string httpMethod = "GET")
         {
             // 准备 请求
