@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Mvc5.Knowleadge.Controllers
+namespace Mvc5.Knowleadge.Areas.UrlsAndRoutes.Controllers
 {
     [RoutePrefix("Users")]
     public class CustomerController : Controller

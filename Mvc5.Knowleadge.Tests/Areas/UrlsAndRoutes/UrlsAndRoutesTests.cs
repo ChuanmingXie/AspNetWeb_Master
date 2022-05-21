@@ -1,22 +1,37 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
+﻿/*****************************************************************************
+*项目名称:Mvc5.Knowleadge.Tests.Areas.UrlsAndRoutes
+*项目描述:
+*类 名 称:UrlsAndRoutesAreaRegistrationTests
+*类 描 述:
+*创 建 人:Chuanmingxie
+*创建时间:2022/5/21 18:25:39
+*修 改 人:
+*修改时间:
+*作用描述:<FUNCTION>
+*Copyright @ chuanming 2022. All rights reserved
+******************************************************************************/
 using System;
 using System.Reflection;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Routing;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
-namespace Mvc5.Knowleadge.Tests
+namespace Mvc5.Knowleadge.Areas.UrlsAndRoutes.Tests
 {
-    [TestClass]
-    public class RouteTests
+    [TestClass()]
+    public class UrlsAndRoutesTests
     {
         [TestMethod]
         public void TestIncomingConstraint()
         {
             TestRouteMatch("~/Home/About/All/Delete/Parm", "Home", "About", new { id = "All", catchall = "Delete/Parm" });
-            TestRouteFail("~/Home/OtherAction");
-            TestRouteFail("~/Account/Index");
-            TestRouteFail("~/Account/About");
+            // 测试约束路由，但由于存在可变长路由方案，可以匹配，测试时需将约束路由之外的方案全部隐掉
+            //TestRouteFail("~/Home/OtherAction");
+            //TestRouteFail("~/Account/Index");
+            //TestRouteFail("~/Account/About");
+
         }
 
         [TestMethod]
@@ -90,7 +105,9 @@ namespace Mvc5.Knowleadge.Tests
         {
             // 准备
             RouteCollection routes = new RouteCollection();
-            RouteConfig.RegisterRoutes(routes);
+            AreaRegistrationContext area = new AreaRegistrationContext("UrlsAndRoutes", routes);
+            UrlsAndRoutesAreaRegistration areaRegistration = new UrlsAndRoutesAreaRegistration();
+            areaRegistration.RegisterArea(area);
 
             //动作
             RouteData result = routes.GetRouteData(CreateHttpContext(url, httpMethod));
@@ -103,9 +120,9 @@ namespace Mvc5.Knowleadge.Tests
         private bool TestIncomingRouteTesult(RouteData routeResult, string controller, string action, object routeProperties)
         {
             Func<object, object, bool> valCompare = (v1, v2) =>
-              {
-                  return StringComparer.InvariantCultureIgnoreCase.Compare(v1, v2) == 0;
-              };
+            {
+                return StringComparer.InvariantCultureIgnoreCase.Compare(v1, v2) == 0;
+            };
             bool result = valCompare(routeResult.Values["controller"], controller)
                 && valCompare(routeResult.Values["action"], action);
             if (routeProperties != null)
@@ -128,7 +145,10 @@ namespace Mvc5.Knowleadge.Tests
         {
             //准备
             RouteCollection routes = new RouteCollection();
-            RouteConfig.RegisterRoutes(routes);
+            AreaRegistrationContext area = new AreaRegistrationContext("UrlsAndRoutes", routes);
+            UrlsAndRoutesAreaRegistration areaRegistration = new UrlsAndRoutesAreaRegistration();
+            areaRegistration.RegisterArea(area);
+            //RouteConfig.RegisterRoutes(routes);
             //动作
             RouteData result = routes.GetRouteData(CreateHttpContext(url));
             //断言

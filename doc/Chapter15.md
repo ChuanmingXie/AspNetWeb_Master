@@ -18,7 +18,7 @@
     对模式是保守的：模式只会匹配片段相同URL
     对片段是宽松的：URL格式与片段数相同时,模式不加验证直接将值对应到变量
 
-## 3. 使用路由
+## 3. 使用入站路由
 [RouteConfig.cs](https://github.com/ChuanmingXie/AspNetWeb_Master/blob/master/Mvc5.Knowleadge/App_Start/RouteConfig.cs "RouteConfig.cs")
 ### i. 注册一条简单路由并测试
 #### A. 系统目录下Global.asax.cs内包含对Route.Config.cs文件去静态方法的调用
@@ -183,7 +183,7 @@
         TestRouteFail("~/Customer/List/All/3");
     }
 
-### vi. 自定义片段变量
+### iv. 自定义片段变量
     * 除了controller和action片段变量之外，还可以自定义自己的变量。下面的示例演示了新增id片段的路由方案。 
     // 自定义片段
     routes.MapRoute("DefinedPart", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = "DefaultId" });
@@ -356,7 +356,7 @@
         new { customConstraint = new UserAgentConstraint("Chrome") },
         new []{ "Mvc5.Knowleadge.Areas.UrlsAndRoutes.Controllers" });
 
-### v. 属性路由
+### vi. 属性路由
     Mvc框架同时支持约定路由和属性路由。
     Mvc模式的主要目标，将应用程序的不同部分分离，以使它们更容易编写、测试和维护。相较而言，
     约定路由使控制器不需要了解或依赖应用程序的路由配置而更适应这种模式。
@@ -409,3 +409,5 @@
         //action
     }
     同时如果某个动作不希望使用此前缀可以使用"~/" (如 [Route("~/Test")])
+
+## 4. 使用出站路由

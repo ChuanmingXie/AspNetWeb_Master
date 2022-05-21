@@ -1,8 +1,8 @@
 ## 1. 系统后台数据管理
     CRUD：创建、读取、更新和删除
 ### i. 创建后台区域与布局页设置
-严重性	代码	说明	项目	文件	行	禁止显示状态
-错误	CS1929	“IEnumerable<Product>”不包含“ToListAsync”的定义，并且最佳扩展方法重载“QueryableExtensions.ToListAsync(IQueryable)”需要类型为“IQueryable”的接收器	SportsStore.WebUI	D:\CodePractice\AspNetWeb_Master\SportsStore.WebUI\Areas\BackendAdmin\Controllers\ProductsController.cs	30	活动
+    严重性	代码	说明	项目	文件	行	禁止显示状态
+    错误	CS1929	“IEnumerable<Product>”不包含“ToListAsync”的定义，并且最佳扩展方法重载“QueryableExtensions.ToListAsync(IQueryable)”需要类型为“IQueryable”的接收器	SportsStore.WebUI	D:\CodePractice\AspNetWeb_Master\SportsStore.WebUI\Areas\BackendAdmin\Controllers\ProductsController.cs	30	活动
 
 ### ii.index列表功能 
     控制器index列表动作
@@ -57,23 +57,23 @@
 
     Source Error:
 
-..\SportsStore.WebUI\Areas\BackendAdmin\Views\web.config
+    ..\SportsStore.WebUI\Areas\BackendAdmin\Views\web.config
 
-..\SportsStore.WebUI\Web.config
-    <system.web>
-		<compilation debug="true" targetFramework="4.8" />
-		<httpRuntime targetFramework="4.8" />
-		<globalization culture="zh-cn" uiCulture="zh-cn"/>
-		<!--<globalization culture="en-us" uiCulture="en-us" />-->
+    ..\SportsStore.WebUI\Web.config
+        <system.web>
+            <compilation debug="true" targetFramework="4.8" />
+            <httpRuntime targetFramework="4.8" />
+            <globalization culture="zh-cn" uiCulture="zh-cn"/>
+            <!--<globalization culture="en-us" uiCulture="en-us" />-->
 
-		<authentication mode="Forms">
-			<forms loginUrl="~/BackendAdmin/Account/Login" timeout="2880">
-				<credentials passwordFormat="Clear">
-					<user name="admin" password="secret"/>
-				</credentials>
-			</forms>
-		</authentication>
-	</system.web>
+            <authentication mode="Forms">
+                <forms loginUrl="~/BackendAdmin/Account/Login" timeout="2880">
+                    <credentials passwordFormat="Clear">
+                        <user name="admin" password="secret"/>
+                    </credentials>
+                </forms>
+            </authentication>
+        </system.web>
 
 ## 3. 商品图片数据管理-数据库扩展示例
 
