@@ -101,17 +101,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery.mobile-1.4.5.css" />
+    <Content Include="Content\jquery.mobile-1.4.5.min.css" />
+    <Content Include="Content\jquery.mobile.theme-1.4.5.css" />
+    <Content Include="Content\jquery.mobile.theme-1.4.5.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.mobile-1.4.5.js" />
+    <Content Include="Scripts\jquery.mobile-1.4.5.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\RoutesHighAttribute\Controllers\HomeController.cs" />
     <Compile Include="Areas\RoutesHighAttribute\RoutesHighAttributeAreaRegistration.cs" />
     <Compile Include="Areas\UrlsAndRoutes\Controllers\HomeController.cs" />
     <Compile Include="Areas\UrlsAndRoutes\UrlsAndRoutesAreaRegistration.cs" />
     <Compile Include="Areas\UrlsAndRoutes\Controllers\CustomerController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -124,11 +144,19 @@
     <Content Include="Areas\UrlsAndRoutes\Views\web.config" />
     <Content Include="Areas\UrlsAndRoutes\Views\Shared\ActionName.cshtml" />
     <Content Include="Areas\RoutesHighAttribute\Views\web.config" />
+    <Content Include="Areas\RoutesHighAttribute\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\RoutesHighAttribute\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\RoutesHighAttribute\Views\Home\Index.cshtml" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\ActionName.cshtml" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\jquery.mobile-1.4.5.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -138,9 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\RoutesHighAttribute\Controllers\" />
     <Folder Include="Areas\RoutesHighAttribute\Data\" />
-    <Folder Include="Areas\RoutesHighAttribute\Views\Shared\" />
     <Folder Include="Areas\UrlsAndRoutes\Data\" />
     <Folder Include="Areas\UrlsAndRoutes\Views\Home\" />
     <Folder Include="Models\" />

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Mvc5.Knowleadge.Controllers
+namespace Mvc5.Knowleadge.Areas.RoutesHighAttribute.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        // GET: RoutesHighAttribute/Home
         public ActionResult Index()
         {
             return View();
