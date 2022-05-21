@@ -11,13 +11,22 @@ namespace Mvc5.Knowleadge.Tests
     public class RouteTests
     {
         [TestMethod]
+        public void TestIncomingConstraint()
+        {
+            TestRouteMatch("~/Home/About/All/Delete/Parm", "Home", "About", new { id = "All", catchall = "Delete/Parm" });
+            TestRouteFail("~/Home/OtherAction");
+            TestRouteFail("~/Account/Index");
+            TestRouteFail("~/Account/About");
+        }
+
+        [TestMethod]
         public void TestIncomingRoutes()
         {
             TestRouteMatch("~/Admin/Index", "Admin", "Index");
             TestRouteMatch("~/One/Two", "One", "Two");
             TestRouteMatch("~/Admin", "Admin", "Index");
-            TestRouteFail("~/Admin/Index/Segment/3");
-            //TestRouteFail("~/Admin"); 默认路由为删除可以匹配
+            //TestRouteFail("~/Admin/Index/Segment/3"); 可变长路由方案，可以匹配
+            //TestRouteFail("~/Admin"); 默认路由方案，可以匹配
         }
 
         [TestMethod]
@@ -26,7 +35,7 @@ namespace Mvc5.Knowleadge.Tests
             TestRouteMatch("~/", "Home", "Index");  //无片段时,可以匹配到controller是Home;action是Index
             TestRouteMatch("~/Customer", "Customer", "Index");
             TestRouteMatch("~/Customer/List", "Customer", "List");
-            TestRouteFail("~/Customer/List/All/3");
+            //TestRouteFail("~/Customer/List/All/3");  可变长路由方案，可以匹配
         }
 
         [TestMethod]
@@ -36,8 +45,27 @@ namespace Mvc5.Knowleadge.Tests
             TestRouteMatch("~/Public/Customer/List", "Customer", "List");
             TestRouteMatch("~/Shop/Index", "Home", "Index");
             TestRouteMatch("~/Shop/OldAction", "Home", "Index");
-            TestRouteFail("~/Customer/List/All/3");
+            //TestRouteFail("~/Customer/List/All/3");   可变长路由方案，可以匹配
         }
+
+        [TestMethod]
+        public void TestIncomingRoutesPart()
+        {
+            TestRouteMatch("~/", "Home", "Index", new { id = "DefaultId" });
+            TestRouteMatch("~/Customer", "Customer", "Index", new { id = "DefaultId" });
+            TestRouteMatch("~/Customer/List", "Customer", "List", new { id = "DefaultId" });
+            TestRouteMatch("~/Customer/List/All", "Customer", "List", new { id = "All" });
+            //TestRouteFail("~/Customer/List/All/Delete");  可变长路由方案，可以匹配
+        }
+
+        [TestMethod]
+        public void TestIncomingRoutesLengthen()
+        {
+            TestRouteMatch("~/Customer/List/All/Delete", "Customer", "List", new { id = "All", catchall = "Delete" });
+            TestRouteMatch("~/Customer/List/All/Delete/Parm", "Customer", "List", new { id = "All", catchall = "Delete/Parm" });
+
+        }
+
 
         private HttpContextBase CreateHttpContext(string targetUrl = null, string httpMethod = "GET")
         {
