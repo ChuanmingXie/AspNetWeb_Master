@@ -383,8 +383,8 @@
         }
     访问URL https://localhost:port/User/Add/Admin/100
 #### C. 与约束路由组合使用
-##### a. 示例：int:id 相当于 IntRouteConstraint
-        [Route("Users/Add/{user}/{int:id}")]
+##### a. 示例：id:int 相当于 IntRouteConstraint
+        [Route("Users/Add/{user}/{id:int}")]
         public string Create(string user, int id)
         {
             return $"创建动作 - 用户:{user},ID:{id}";
@@ -493,3 +493,11 @@
     补充：对应的属性路由也可以设置类似名称
     [Route("Add/{user}/{id:int}",Name="AddRoute")]
 
+
+### ii. 定制路由规则
+
+### iii. 使用区域
+
+### iv. 对磁盘进行路由请求
+
+### v. 绕过路由系统即最佳URL效果
