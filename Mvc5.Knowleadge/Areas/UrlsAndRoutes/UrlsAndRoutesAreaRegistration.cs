@@ -49,9 +49,9 @@ namespace Mvc5.Knowleadge.Areas.UrlsAndRoutes
                 "UrlsAndRoutes/{controller}/{action}/{id}",
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional });
 
-            context.MapRoute("ChromeRoute", "UrlsAndRoutes/{*catchall}",
-                new { contoller = "Home", action = "Index" },
-                new { customConstraint = new UserAgentConstraint("Chrome") });
+            //context.MapRoute("ChromeRoute", "UrlsAndRoutes/{*catchall}",
+            //    new { contoller = "Home", action = "Index" },
+            //    new { customConstraint = new UserAgentConstraint("Chrome") });
 
             // 6.在路由中使用命名空间
             //Route myRoute = routes.MapRoute("Default", "UrlsAndRoutes/{controller}/{action}/{id}",

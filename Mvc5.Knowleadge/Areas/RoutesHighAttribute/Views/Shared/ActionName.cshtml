@@ -1,0 +1,19 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>控制器名称：@ViewBag.Controller</div>
+    <div>动作名称：@ViewBag.Action</div>
+    <div>查询变量：@ViewBag.CustomVariable</div>
+    <div>@Html.ActionLink("这是一个出站URL", "CustomVariable", new { id = "Hello" })</div>
+    <div>@Html.ActionLink("这是一个出站URL", "CustomVariable")</div>
+</body>
+</html>

@@ -18,7 +18,8 @@ namespace Mvc5.Knowleadge.Areas.UrlsAndRoutes.Controllers
             return View("ActionName");
         }
 
-        [Route("Users/Add/{user}/{int:id}")]
+        //[Route("Users/Add/{user}/{int:id}")]--巨大错误
+        [Route("Users/Add/{user}/{id:int}")]
         public string Create(string user, int id)
         {
             return $"创建动作 - 用户:{user},ID:{id}";

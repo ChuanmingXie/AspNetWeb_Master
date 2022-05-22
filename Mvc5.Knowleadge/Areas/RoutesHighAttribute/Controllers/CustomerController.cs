@@ -4,22 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Mvc5.Knowleadge.Controllers
+namespace Mvc5.Knowleadge.Areas.RoutesHighAttribute.Controllers
 {
-    public class HomeController : Controller
+    [RouteArea("RoutesHighAttribute")]
+    [RoutePrefix("User")]
+    public class CustomerController : Controller
     {
-        // GET: Home
+        // GET: RoutesHighAttribute/Customer
+        [Route("Test")]
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        [Route("TestCustomerHome")]
-        public ActionResult TestCustomer()
         {
             ViewBag.Controller = "Customer";
             ViewBag.Action = "Index";
             return View("ActionName");
         }
+
     }
 }

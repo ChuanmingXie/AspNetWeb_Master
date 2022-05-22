@@ -411,3 +411,85 @@
     同时如果某个动作不希望使用此前缀可以使用"~/" (如 [Route("~/Test")])
 
 ## 4. 使用出站路由
+### i. 借助Html.ActionLink()辅助器方法说明URL的出站规则
+#### A. 结合路由系统生成URL
+##### a. 使用示例
+    * 路由方案
+    routes.MapRoute("MyRoute", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+    * 使用辅助器
+    @Html.ActionLink("输出URL", "CustomVariable")
+    该示例生成
+    URL：https://localhost:44344/Home/CustomVariable
+    Html: <a href="/Home/CustomVariable">输出URL</a>
+#### B. 指定控制器
+##### a. 使用示例
+    @Html.ActionLink("指定控制器", "Index", "Admin")
+##### b. 结合不同路由方式
+    * 当使用下述约定路由方案
+    context.MapRoute("NewRoute", "App/Do{action}", new { controller = "Admin"});
+    示例最终生成
+    URL：https://localhost:44344/App/DoIndex
+    Html: <a href="/App/DoIndex">指定控制器</a>
+    *　当使用下述属性路由方案
+        [Route("TestAction")]
+        public ActionResult Index()
+        {
+            ViewBag.Controller = "Admin";
+            ViewBag.Action = "Index";
+            return View("ActionName");
+        }
+    注意：使用属性路由时要开启 routes.MapMvcAttributeRoutes();
+         在区域Area中使用要添加context.Routes.MapMvcAttributeRoutes();
+    示例最终生成
+    URL: https://localhost:44344/TestAction
+    Html: <a href="/TestAction">指定控制器</a>
+#### C. 传递参数
+##### a. 使用示例1
+    * 路由方案
+    context.MapRoute("NewRoute", "App/Do{action}", new { controller = "Admin" });
+    * 使用辅助器
+    @Html.ActionLink("设定参数", "CustomVariable", "Admin", new { id = "Hello" }, null)
+    * 结果  
+    https://localhost:44344/App/DoCustomVariable?id=Hello
+##### b. 使用实例2
+    * 路由方案
+    routes.MapRoute("MyRoute", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+    * 使用辅助器
+    @Html.ActionLink("设定参数", "CustomVariable", new { id = "Hello" })
+    * 结果  
+    https://localhost:44344/Home/CustomVariable/Hello
+#### D. 传递标签属性(样式，id等等)
+##### a. 使用示例
+    * 辅助器
+    @Html.ActionLink("设定参数", "CustomVariable", new { id = "Hello" },new { id="myAnchorID",@class="myCSSClass"})
+    * 结果
+    <a class="myCSSClass" href="/Home/CustomVariable/Hello" id="myAnchorID">设定参数</a>
+#### E. 其他方法
+##### a. 生成全限定链接
+    * 示例
+    @Html.ActionLink("设定参数", "CustomVariable","Home","https",
+    "myserver.cloudwhales.com","myFragementName",
+    new { id = "Hello" }, new { id = "myAnchorID", @class = "myCSSClass" })
+    * 结果
+    <a class="myCSSClass" href="https://myserver.cloudwhales.com:44344/RoutesHighAttribute/Home/CustomVariable/Hello#myFragementName" id="myAnchorID">设定参数</a>
+    * 源代码
+    public static MvcHtmlString ActionLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes);
+##### b. 生成纯URL：@Url.Action()
+    @Url.Action("Index","Home",new{id="MyId"})
+##### c. 在动作方法中生成纯URL: 
+    Url.RouteUrl(new{controller="Home",action=""Index})
+    RedirectToRoute(controller="Home",action="Index",id="MyID")
+##### d. 根据特定属性路由生成URL
+    每条路由方案都有对应的名字，所以可以使用Html.RouteLink()覆盖默认路由匹配。
+    * 路由方案
+    routes.MapRoute("MyRoute", "{controller}/{action}");
+    routes.MapRoute("MyOtherRoute", "App/{action}", new { controller = "Home" });
+    * 默认辅助方法的使用
+    @Html.ActionLink("测试1","Index","Customer")
+    生成: <a href="/Customer/Index">输出URL</a>
+    * 指定特定路由方案的复制器方法使用
+    @Html.RouteLink("测试2","MyOtherRoute","Index","Customer")
+    生成: <a Length="8" href="/App/Index?Length=5">输出URL</a>
+    补充：对应的属性路由也可以设置类似名称
+    [Route("Add/{user}/{id:int}",Name="AddRoute")]
+

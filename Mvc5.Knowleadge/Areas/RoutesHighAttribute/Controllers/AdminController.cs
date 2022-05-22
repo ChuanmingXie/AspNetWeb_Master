@@ -6,28 +6,25 @@ using System.Web.Mvc;
 
 namespace Mvc5.Knowleadge.Areas.RoutesHighAttribute.Controllers
 {
-    public class HomeController : Controller
+    //[RouteArea("RoutesHighAttribute")]
+    //[RoutePrefix("Admin")]
+    public class AdminController : Controller
     {
-        // GET: RoutesHighAttribute/Home
+        // GET: RoutesHighAttribute/Admin
+        //[Route("TestAction")]
         public ActionResult Index()
         {
-            return View();
+            ViewBag.Controller = "Admin";
+            ViewBag.Action = "Index";
+            return View("ActionName");
         }
+
 
         public ActionResult CustomVariable(string id)
         {
             ViewBag.Controller = "Home";
             ViewBag.Action = "CustomVariable";
             ViewBag.CustomVariable = id;
-            return View("ActionName");
-        }
-
-
-        public ActionResult CustomVariableOptional(string id)
-        {
-            ViewBag.Controller = "Home";
-            ViewBag.Action = "CustomVariableOptional";
-            ViewBag.CustomVariable = id ?? "没有id值";
             return View("ActionName");
         }
     }

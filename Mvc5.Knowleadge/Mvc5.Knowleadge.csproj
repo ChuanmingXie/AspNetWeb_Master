@@ -105,14 +105,24 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\prettify.css" />
+    <Content Include="Scripts\prettify.js" />
+    <Content Include="Scripts\bootstrap3-typeahead.min.js" />
     <Content Include="Content\jquery.mobile-1.4.5.css" />
     <Content Include="Content\jquery.mobile-1.4.5.min.css" />
     <Content Include="Content\jquery.mobile.theme-1.4.5.css" />
     <Content Include="Content\jquery.mobile.theme-1.4.5.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\RoutesHighAttribute\Views\Home\Index.cshtml" />
+    <Content Include="Areas\RoutesHighAttribute\Views\Shared\ActionName.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -127,7 +137,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\RoutesHighAttribute\Controllers\AdminController.cs" />
+    <Compile Include="Areas\RoutesHighAttribute\Controllers\CustomerController.cs" />
     <Compile Include="Areas\RoutesHighAttribute\Controllers\HomeController.cs" />
+    <Content Include="Areas\file\16.1.1InitRoutes.txt" />
     <Compile Include="Areas\RoutesHighAttribute\RoutesHighAttributeAreaRegistration.cs" />
     <Compile Include="Areas\UrlsAndRoutes\Controllers\HomeController.cs" />
     <Compile Include="Areas\UrlsAndRoutes\UrlsAndRoutesAreaRegistration.cs" />
@@ -146,7 +159,7 @@
     <Content Include="Areas\RoutesHighAttribute\Views\web.config" />
     <Content Include="Areas\RoutesHighAttribute\Views\_ViewStart.cshtml" />
     <Content Include="Areas\RoutesHighAttribute\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\RoutesHighAttribute\Views\Home\Index.cshtml" />
+    <Content Include="Areas\RoutesHighAttribute\Views\Home\Index-bak.cshtml" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />

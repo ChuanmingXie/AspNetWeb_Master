@@ -1,0 +1,604 @@
+﻿
+@{
+    ViewBag.Title = "高级路由特性";
+}
+
+<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id="id_scroll_spy">
+    <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="128">
+        <li class="nav-link active"><a href="#modaldiv">16.1.项目初始化</a></li>
+        <li class="nav-link"><a href="#typeaheaddiv">16.2.在视图中显示URL</a></li>
+        <li class="nav-link"><a href="#spydiv">16.3.定制路由系统</a></li>
+        <li class="nav-link"><a href="#tabdiv">16.4.使用区域</a></li>
+        <li class="nav-link"><a href="#paneldiv">16.5.对磁盘文件使用路由</a></li>
+        <li class="nav-link"><a href="#carouseldiv">16.6.绕过路由系统</a></li>
+        <li class="nav-link"><a href="#dropmenudiv">16.7.最佳的URL方案</a></li>
+        <li class="nav-link"><a href="#statictooltip">静态提示框</a></li>
+        <li class="nav-link"><a href="#dynamictooltip">动态提示框</a></li>
+        <li class="nav-link"><a href="#staticpopover">静态弹出框</a></li>
+        <li class="nav-link"><a href="#dynamicpopover">动态弹出框</a></li>
+        <li class="nav-link"><a href="#alertdiv">交互警告框</a></li>
+        <li class="nav-link"><a href="#statusbtn">状态按钮</a></li>
+        <li class="nav-link"><a href="#checkbtn">复选按钮</a></li>
+        <li class="nav-link"><a href="#radiobtn">单选按钮</a></li>
+    </ul>
+</div>
+<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+    <div class="jumbotron">
+        <h3>Chapter16：高级路由特性</h3>
+    </div>
+    <div class="form-horizontal">
+        <div id="modaldiv" class="form-group">
+            <label for="" class="col-sm-2 control-label">用模态框:</label>
+            <div class="col-sm-10">
+                <a id="modalval" class="btn btn-primary" data-toggle="modal"
+                   href='#dynamicModal'>开始验证模态框</a>
+            </div>
+        </div>
+
+        <div id="typeaheaddiv" class="form-group">
+            <label for="typeahead" class="col-sm-2 control-label">输入提示:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       class="form-control"
+                       data-provide="typeahead"
+                       data-items="5"
+                       data-source='["Alpha","Ahead","Amaze","Apple","Atop",
+                                        "BBS","Barcelona","Basic","Beyond","Balance",
+                                        "C语言","C++","C#","CBD","Career"]'>
+            </div>
+        </div>
+
+        <div id="spydiv" class="form-group">
+            <label for="" class="col-sm-2 control-label">滚动监听:</label>
+            <div class="col-sm-10">
+                <nav id="navbar-scrollspy" class="navbar navbar-inverse bg-primary navbar-static"
+                     role="navigation">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target=".navbar-scrollspy-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">滚动监听</a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse navbar-scrollspy-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#header">顶部</a></li>
+                                <li><a href="#mid">主体</a></li>
+                                <li class="dropdown">
+                                    <a href="#" id="navbarDrop" data-toggle="dropdown">
+                                        Dropdown
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="navbarDrop">
+                                        <li><a href="#setting" tabindex="-1">设置</a></li>
+                                        <li><a href="#bbs" tabindex="-1">讨论</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#about" tabindex="-1">关于</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div>
+                </nav>
+                <div data-spy="scroll" data-target="#navbar-scrollspy" data-offset="0"
+                     class="scrollspy-example">
+                    <h4 id="header">顶部</h4>
+                    <p>滚顶监听-</p>
+                    <p>滚动监听-</p>
+                    <p>滚动监听-</p>
+                    <p>滚动监听-</p>
+                    <h4 id="mid">主体</h4>
+                    <p>滚顶监听-</p>
+                    <p>滚动监听-</p>
+                    <p>滚动监听-</p>
+                    <p>滚动监听-</p>
+                    <h4 id="setting">设置</h4>
+                    <p>滚顶监听-</p>
+                    <p>滚动监听-</p>
+                    <p>滚动监听-</p>
+                    <p>滚动监听-</p>
+                    <h4 id="bbs">讨论</h4>
+                    <p>滚顶监听-</p>
+                    <p>滚动监听-</p>
+                    <p>滚动监听-</p>
+                    <p>滚动监听-</p>
+                    <h4 id="about">关于</h4>
+                    <p>滚顶监听-</p>
+                    <p>滚动监听-</p>
+                    <p>滚动监听-</p>
+                    <p>滚动监听-</p>
+                </div>
+            </div>
+        </div>
+        <div id="tabdiv" class="form-group">
+            <label for="" class="col-sm-2 control-label">标签切换:</label>
+            <div class="col-sm-10">
+                <div role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#homepage" aria-controls="homepage" role="tab"
+                               data-toggle="tab">主页</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#newspage" aria-controls="newspage" role="tab"
+                               data-toggle="tab">新闻</a>
+                        </li>
+                        <li role="presentation" class="dropdown">
+                            <a href="#" id="myTabDrop1" class="dropdown-toggle"
+                               data-toggle="dropdown">下拉菜单<b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu" id="myTabDrop1-contents">
+                                <li>
+                                    <a href="#dropdown1" role="tab" id="dropdown1-tab"
+                                       data-toggle="tab">@@设置</a>
+                                </li>
+                                <li>
+                                    <a href="#dropdown2" role="tab" id="dropdown2-tab"
+                                       data-toggle="tab">@@定制</a>
+                                </li>
+                                <li>
+                                    <a href="#dropdown3" role="tab" id="dropdown3-tab"
+                                       data-toggle="tab">@@关于</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="homepage">
+                            <p>主页标签页</p>
+                            <p>主页标签页</p>
+                            <p>主页标签页</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="newspage">
+                            <p>新闻标签页</p>
+                            <p>新闻标签页</p>
+                            <p>新闻标签页</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fada" id="dropdown1">
+                            <p>设置标签页</p>
+                            <p>设置标签页</p>
+                            <p>设置标签页</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fada" id="dropdown2">
+                            <p>定制标签页</p>
+                            <p>定制标签页</p>
+                            <p>定制标签页</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fada" id="dropdown3">
+                            <p>关于标签页</p>
+                            <p>关于标签页</p>
+                            <p>关于标签页</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="paneldiv" class="form-group">
+            <label for="" class="col-sm-2 control-label">折叠面板:</label>
+            <div class="col-sm-10">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" id="headingOne">
+                            <h3 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                   aria-expanded="true" aria-controls="collapseOne">
+                                    可折叠组#1
+                                </a>
+                            </h3>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                             aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                可折叠分组 #1 内容区域
+                                可折叠分组 #1 内容区域
+                                可折叠分组 #1 内容区域
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" id="headingTwo">
+                            <h3 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+                                   aria-expanded="true" aria-controls="collapseTwo">
+                                    可折叠组#2
+                                </a>
+                            </h3>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel"
+                             aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                可折叠分组 #2 内容区域
+                                可折叠分组 #2 内容区域
+                                可折叠分组 #2 内容区域
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" id="headingThree">
+                            <h3 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+                                   aria-expanded="true" aria-controls="collapseThree">
+                                    可折叠组#3
+                                </a>
+                            </h3>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel"
+                             aria-labelledby="headingThree">
+                            <div class="panel-body">
+                                可折叠分组 #3 内容区域
+                                可折叠分组 #3 内容区域
+                                可折叠分组 #3 内容区域
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="carouseldiv" class="form-group">
+            <label for="" class="col-sm-2 control-label">幻灯大图:</label>
+            <div class="col-sm-10">
+                <div id="carouselpic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselpic" data-slide-to="0" class=""></li>
+                        <li data-target="#carouselpic" data-slide-to="1" class=""></li>
+                        <li data-target="#carouselpic" data-slide-to="2" class="active"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item">
+                            <img data-src="holder.js/900x500/auto/#777:#7a7a7a/text:First slide"
+                                 alt="First slide"
+                                 src="content/bootstrap/img/bootstrap-mdo-sfmoma-01.jpg">
+                            <div class="container">
+                                <div class="carousel-caption">
+                                    <h1>标题1</h1>
+                                    <p>Note:</p>
+                                    <p>
+                                        <a class="btn btn-lg btn-primary" href="#" role="button">
+                                            Sign up
+                                            today
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img data-src="holder.js/900x500/auto/#666:#6a6a6a/text:Second slide"
+                                 alt="Second slide"
+                                 src="content/bootstrap/img/bootstrap-mdo-sfmoma-02.jpg">
+                            <div class="container">
+                                <div class="carousel-caption">
+                                    <h1>Another 标题2</h1>
+                                    <p>Note:</p>
+                                    <p>
+                                        <a class="btn btn-lg btn-primary" href="#" role="button">
+                                            Learn
+                                            more
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item active">
+                            <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:Third slide"
+                                 alt="Third slide"
+                                 src="content/bootstrap/img/bootstrap-mdo-sfmoma-03.jpg">
+                            <div class="container">
+                                <div class="carousel-caption">
+                                    <h1>One more 标题3</h1>
+                                    <p>Note:</p>
+                                    <p>
+                                        <a class="btn btn-lg btn-primary" href="#" role="button">
+                                            Browse
+                                            gallery
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#carouselpic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carouselpic" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="dropmenudiv" class="form-group">
+            <label for="" class="col-sm-2 control-label">下拉菜单:</label>
+            <div class="col-sm-10">
+                <nav class="navbar navbar-default navbar-static" role="navigation">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target=".navbar-ex1-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">下拉菜单</a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse navbar-ex1-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#">菜单1</a></li>
+                                <li class="dropdown">
+                                    <a id="drop1" href="" class="dropdown-toggle"
+                                       data-toggle="dropdown">菜单2<b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                                        <li role="presentation">
+                                            <a href="" role="menuitem">下拉子菜单1</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="" role="menuitem">下拉子菜单2</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="" role="menuitem">下拉子菜单3</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a id="drop2" href="" class="dropdown-toggle"
+                                       data-toggle="dropdown">菜单3<b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                                        <li role="presentation">
+                                            <a href="" role="menuitem">下拉子菜单1</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="" role="menuitem">下拉子菜单2</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="" role="menuitem">下拉子菜单3</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <form class="navbar-form navbar-left" role="search">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Search">
+                                    </div>
+                                    <button type="submit" class="btn btn-default">Submit</button>
+                                </form>
+                                <li><a href="#">Link</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        Dropdown
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div id="statictooltip" class="form-group">
+            <label for="" class="col-sm-2 control-label">静态提示框:</label>
+            <div class="col-sm-10">
+                <div class=" bs-example bs-example-tooltip">
+                    <div class="tooltip left" role="tooltip">
+                        <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            左侧工具提示框
+                        </div>
+                    </div>
+                    <div class="tooltip top" role="tooltip">
+                        <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            顶部工具提示框
+                        </div>
+                    </div>
+                    <div class="tooltip right" role="tooltip">
+                        <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            右侧工具提示框
+                        </div>
+                    </div>
+                    <div class="tooltip bottom" role="tooltip">
+                        <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                            底部工具提示框
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="dynamictooltip" class="form-group">
+            <label for="" class="col-sm-2 control-label">动态提示框:</label>
+            <div class="col-sm-10">
+                <div class="bs-example">
+                    <button type="button" class="btn btn-default" data-toggle="tooltip"
+                            data-placement="left" title="左侧工具提示框">
+                        左侧提示框
+                    </button>
+                    <button type="button" class="btn btn-default" data-toggle="tooltip"
+                            data-placement="top" title="上侧工具提示框">
+                        上侧提示框
+                    </button>
+                    <button type="button" class="btn btn-default" data-toggle="tooltip"
+                            data-placement="right" title="右侧工具提示框">
+                        右侧提示框
+                    </button>
+                    <button type="button" class="btn btn-default" data-toggle="tooltip"
+                            data-placement="bottom" title="下侧工具提示框">
+                        下侧提示框
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="staticpopover" class="form-group">
+            <label for="" class="col-sm-2 control-label">静态弹出框:</label>
+            <div class="col-sm-10">
+                <div class="bs-example bs-example-popover">
+                    <div class="popover left">
+                        <div class="arrow"></div>
+                        <div class="popover-title">向 left弹出（静态）</div>
+                        <div class="popover-content">
+                            <p>这是一个静态向 left弹出框</p>
+                        </div>
+                    </div>
+                    <div class="popover top">
+                        <div class="arrow"></div>
+                        <div class="popover-title">向 top弹出（静态）</div>
+                        <div class="popover-content">
+                            <p>这是一个静态向 top弹出框</p>
+                        </div>
+                    </div>
+                    <div class="popover right">
+                        <div class="arrow"></div>
+                        <div class="popover-title">向 right弹出（静态）</div>
+                        <div class="popover-content">
+                            <p>这是一个静 right态向弹出框</p>
+                        </div>
+                    </div>
+                    <div class="popover bottom">
+                        <div class="arrow"></div>
+                        <div class="popover-title">向 bottom侧弹出（静态）</div>
+                        <div class="popover-content">
+                            <p>这是一个静态向 bottom弹出框</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="dynamicpopover" class="form-group">
+            <label for="" class="col-sm-2 control-label">动态弹出框:</label>
+            <div class="col-sm-10">
+                <div class="bs-example">
+                    <button type="button" class="btn btn-default" data-placement="right"
+                            data-toggle="popover" data-content="这是一个向 right 弹出框(动态)" data-container="body">
+                        向
+                        right 弹出框
+                    </button>
+                    <button type="button" class="btn btn-default" data-placement="top"
+                            data-toggle="popover" data-content="这是一个向 top 弹出框(动态)" data-container="body">
+                        向
+                        top 弹出框
+                    </button>
+                    <button type="button" class="btn btn-default" data-placement="left"
+                            data-toggle="popover" data-content="这是一个向 left 弹出框(动态)" data-container="body">
+                        向
+                        left 弹出框
+                    </button>
+                    <button type="button" class="btn btn-default" data-placement="bottom"
+                            data-toggle="popover" data-content="这是一个向 bottom 弹出框(动态)"
+                            data-container="body">
+                        向 bottom 弹出框
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="alertdiv" class="form-group">
+            <label for="" class="col-sm-2 control-label">交互警告框:</label>
+            <div class="col-sm-10">
+                <div class="bs-example">
+                    <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <strong>Alert！</strong>这是一个警告框.
+                    </div>
+                    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <h4>Danger!</h4>
+                        <p>系统提示该操作具有危险性!</p>
+                        <p>
+                            <button type="button" class="btn btn-default">确定</button>
+                            <button type="button" class="btn btn-default">取消</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="statusbtn" class="form-group">
+            <label for="" class="col-sm-2 control-label">状态按钮:</label>
+            <div class="col-sm-10">
+                <button type="button" id="loading-btn" data-loading-text="加载中..."
+                        class="btn btn-primary" autocomplete="off">
+                    测试状态按钮
+                </button>
+                <span id="id-span-info"></span>
+            </div>
+        </div>
+        <div id="checkbtn" class="form-group">
+            <label for="" class="col-sm-2 control-label">复选按钮:</label>
+            <div class="col-sm-10">
+                <div class="btn-group" data-toggle="buttons">
+                    <label for="" class="btn btn-primary active">
+                        <input type="checkbox" name="" id="" autocomplete="off">复选按钮1
+                    </label>
+                    <label for="" class="btn btn-primary">
+                        <input type="checkbox" name="" id="" autocomplete="off">复选按钮2
+                    </label>
+                    <label for="" class="btn btn-primary">
+                        <input type="checkbox" name="" id="" autocomplete="off">复选按钮3
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div id="radiobtn" class="form-group">
+            <label for="" class="col-sm-2 control-label">单选按钮:</label>
+            <div class="col-sm-10">
+                <div class="btn-group" data-toggle="buttons">
+                    <label for="" class="btn btn-primary">
+                        <input type="radio" name="options" id="option1" autocomplete="off">单选按钮1
+                    </label>
+                    <label for="" class="btn btn-primary">
+                        <input type="radio" name="options" id="option2" autocomplete="off">单选按钮2
+                    </label>
+                    <label for="" class="btn btn-primary active">
+                        <input type="radio" name="options" id="option3" autocomplete="off">单选按钮3
+                    </label>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/bootstrap3-typeahead.min.js"></script>
+    <script>
+        $(function () {
+            $("#modalval").click(function (e) {
+                e.preventDefault();
+                $("#dynamicModal").load("content/dist/modal.html");
+            });
+            $("[data-toggle='tooltip']").tooltip();
+            $("[data-toggle='popover']").popover();
+            $("#loading-btn").on('click', function () {
+                var $btn = $(this).button('loading');
+                //执行其他逻辑！
+                setTimeout(() => {
+                    $btn.button('reset');
+                    $('#id-span-info').html('已经重置!');
+                }, 3000);
+            });
+            // 可将 data-spy="affix" data-offset-top="128" 去掉并使用这个JS
+            $("#id-affix").affix({
+                offset: { top: 128 }
+            });
+        })
+    </script>
+}

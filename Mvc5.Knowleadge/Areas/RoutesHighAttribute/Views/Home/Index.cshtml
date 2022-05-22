@@ -1,8 +1,115 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "高级路由特性";
 }
 
-<h2>Index</h2>
+<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id="id_scroll_spy">
+    <ul class="nav nav-pills nav-stacked" id="id-affix">
+        <li class="nav-link active"><a href="#modaldiv">16.1.项目初始化</a></li>
+        <li class="nav-link"><a href="#typeaheaddiv">16.2.在视图中显示URL</a></li>
+        <li class="nav-link"><a href="#spydiv">16.3.定制路由系统</a></li>
+        <li class="nav-link"><a href="#tabdiv">16.4.使用区域</a></li>
+        <li class="nav-link"><a href="#paneldiv">16.5.对磁盘文件使用路由</a></li>
+        <li class="nav-link"><a href="#carouseldiv">16.6.绕过路由系统</a></li>
+        <li class="nav-link"><a href="#dropmenudiv">16.7.最佳的URL方案</a></li>
+    </ul>
+</div>
+<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+    <div class="jumbotron">
+        <h3>Chapter16：高级路由特性</h3>
+    </div>
+    <div class="form-horizontal">
+        <div id="modaldiv" class="form-group col-sm-12">
+            <h4>16.1.1 初始化路由</h4>
+            <p class="text-content">
+                在新建的项目中,初始化 RoutesHighAttributeAreaRegistration类文件
+            </p>
+            <pre class="prettyprint linenums" style="margin-bottom: 2px;">
+            @{
+                var path= Server.MapPath("~/Areas");
+                var data = File.ReadAllText(path+ @"/file/16.1.1InitRoutes.txt");
+                foreach (var item in data)
+                {
+                    @item
+                }
+            }</pre>
+            <h4>16.1.2 为项目和测试项目添加NuGet包</h4>
+            <pre class="prettyprint linenums" style="margin-bottom: 2px;">Install-package Microsoft.AspNet.Web.Optimization -projectname Mvc5.Knowleadge
+Install-package Microsoft.AspNet.Mvc -projectname Mvc5.Knowleadge.Tests</pre>
+        </div>
 
-第16章：高级路由特性
+        <div id="typeaheaddiv" class="form-group col-sm-12">
+            <h4>16.2.1 用路由系统生成URL</h4>
+            <pre class="prettyprint linenums" style="margin-bottom:2px">context.MapRoute("NewRoute", "App/Do{action}", new { controller = "Admin"});</pre>
+            <p class="text-content">
+                通过修改路由方案，在Html.ActionLink辅助器方法的中会显示URL实际生成的效果，测试链接：
+                @*@Html.ActionLink("路由初始化", "Index", "Admin", new { area = "RoutesHighAttribute" }, null) <br />*@
+                @Html.ActionLink("生成URL", "Index", "Admin")<br />
+            </p>
+            <br />
+            <h4>16.2.2 以其他控制器为目标</h4>
+            <p class="text-content">
+                @*@Html.ActionLink("指定控制器", "CustomVariable", "Home", new { area = "RoutesHighAttribute" }, null) <br />*@
+                @Html.ActionLink("指定控制器", "CustomVariable")
+            </p>
+            <p class="text-content">
+                @*@Html.ActionLink("指定控制器2", "Index", "Customer", new { area = "RoutesHighAttribute" }, null) <br />*@
+                @Html.ActionLink("指定控制器2", "Index", "Customer")
+            </p>
+
+            <h4>16.2.3 以其他控制器为目标</h4>
+            <p class="text-content">
+                @Html.ActionLink("设定参数", "CustomVariable", "Admin", new { id = "Hello" }, null)<br />
+            </p>
+            <p class="text-content">
+                @Html.ActionLink("设定参数", "CustomVariable", new { id = "Hello" })<br />
+            </p>
+
+            <h4>16.2.4 添加标签属性</h4>
+            <p class="text-content">
+                @Html.ActionLink("设定参数", "CustomVariable", new { id = "Hello" }, new { id = "myAnchorID", @class = "myCSSClass" })<br />
+            </p>
+            <p class="text-content">
+                @Html.ActionLink("设定参数", "CustomVariable","Home","https","myserver.cloudwhales.com","myFragementName"
+               ,new { id = "Hello" }, new { id = "myAnchorID", @class = "myCSSClass" })<br />
+            </p>
+        </div>
+    </div>
+
+    <div id="spydiv" class="form-group col-sm-12">
+        <label for="" class="col-sm-2 control-label">定制路由系统:</label>
+        <div class="col-sm-10">
+        </div>
+    </div>
+    <div id="tabdiv" class="form-group col-sm-12">
+        <label for="" class="col-sm-2 control-label">对磁盘文件使用路由:</label>
+        <div class="col-sm-10">
+        </div>
+    </div>
+    <div id="paneldiv" class="form-group col-sm-12">
+        <label for="" class="col-sm-2 control-label">绕过路由系统:</label>
+        <div class="col-sm-10">
+        </div>
+    </div>
+    <div id="carouseldiv" class="form-group col-sm-12">
+        <label for="" class="col-sm-2 control-label">最佳的URL方案:</label>
+        <div class="col-sm-10">
+        </div>
+    </div>
+</div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/prettify.js"></script>
+    <script>
+        $(function () {
+            var $window = $(window);
+            // make code pretty
+            window.prettyPrint && prettyPrint();
+            // 可将 data-spy="affix" data-offset-top="128" 去掉并使用这个JS
+            $("#id-affix").affix({
+                offset: { top: 128 }
+            });
+        })
+    </script>
+}

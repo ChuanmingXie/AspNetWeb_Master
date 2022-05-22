@@ -3,6 +3,7 @@
     padding-bottom: 20px;
 }
 
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -16,3 +17,122 @@ textarea {
     max-width: 280px;
 }
 
+.text-content {
+    font-size: 15px;
+    line-height: 22px;
+    text-indent: 30px;
+    text-align: justify;
+    font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "lucida grande", "helvetica Neue", helvetica, arial, "Hiragino Sans GB", "Hiragino Sana GB W3", "microsoft yahei UI", "microsoft yahei", "wenQuanYi Micro Hei", sans-serif
+}
+
+/* 侧边锚点 */
+ul.nav-pills {
+    width: 270px;
+}
+
+    ul.nav-pills.affix {
+        top: 60px;
+    }
+
+/* 滚动导航滚动条高度 */
+.scrollspy-example {
+    position: relative;
+    height: 200px;
+    margin-top: 10px;
+    overflow: auto
+}
+
+/* 弹出框底层背景样式 */
+.bs-example {
+    position: relative;
+    padding: 45px 15px 15px;
+    margin: 0 -15px 15px;
+    border-color: #e5e5e5 #eee #eee;
+    border-style: solid;
+    border-width: 1px 0;
+    -webkit-box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05)
+}
+
+    .bs-example:after {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        font-size: 12px;
+        font-weight: 700;
+        color: #959595;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        content: "Example"
+    }
+
+.bs-example-tooltip .tooltip {
+    position: relative;
+    display: inline-block;
+    margin: 10px 20px;
+    opacity: 1
+}
+
+.bs-example-popover {
+    padding-bottom: 24px;
+    background-color: #f9f9f9
+}
+
+    .bs-example-popover .popover {
+        position: relative;
+        display: block;
+        float: left;
+        width: 260px;
+        margin: 20px
+    }
+
+/* 代码样式 */
+pre {
+    padding: 0 3px 2px;
+    font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+    font-size: 12px;
+    color: #333;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px
+}
+
+pre {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 20px;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre;
+    white-space: pre-wrap;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px
+}
+
+    pre.prettyprint {
+        margin-bottom: 20px
+    }
+
+    pre code {
+        padding: 0;
+        color: inherit;
+        white-space: pre;
+        white-space: pre-wrap;
+        background-color: transparent;
+        border: 0
+    }
+
+.pre-scrollable {
+    max-height: 340px;
+    overflow-y: scroll
+}
+
+ol.linenums {
+    margin: 0 0 0 -10px;
+}
