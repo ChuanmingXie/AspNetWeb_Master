@@ -184,25 +184,27 @@
     }
 
 ### iv. 自定义片段变量
-    * 除了controller和action片段变量之外，还可以自定义自己的变量。下面的示例演示了新增id片段的路由方案。 
+    除了controller和action片段变量之外，还可以自定义自己的变量。下面的示例演示了新增id片段的路由方案。 
     // 自定义片段
     routes.MapRoute("DefinedPart", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = "DefaultId" });
 
-    * 同时可以在视图中显示请求URL的id片段值
-    控制器：
-    public ActionResult Index()
-    {
-        ViewBag.Controller = "Home";
-        ViewBag.Action = "Index";
-        ViewBag.CustomVariable = RouteData.Values["id"];
-        return View("ActionName");
-    }
-    ----
-    视图
+    同时可以在视图中显示请求URL的id片段值
+    - 控制器：
+
+        public ActionResult Index()
+        {
+            ViewBag.Controller = "Home";
+            ViewBag.Action = "Index";
+            ViewBag.CustomVariable = RouteData.Values["id"];
+            return View("ActionName");
+        }
+
+    - 视图
     <div>控制器名称：@ViewBag.Controller</div>
     <div>动作的名称：@ViewBag.Action</div>
     <div>自定义片段：@ViewBag.CustomVariable</div>
-    * 测试
+
+    测试
     public void TestIncomingRoutesPart()
     {
         TestRouteMatch("~/", "Home", "Index", new { id = "DefaultId" });
@@ -255,12 +257,12 @@
     但是我们无法避免在一个项目内有多个相同的HomeController位于不同的命名空间内，此时就需要在路由方案中使用命名空间。
     在具备区域Area的项目中，设置路由的命名空间非常重要。
 ##### b.示例：
-    * 解析主命名空间
+* 解析主命名空间
     routes.MapRoute("Default", "{controller}/{action}/{id}",
         new { controller = "Home", action = "Index", id = UrlParameter.Optional },
         namespaces: new string[] { "Mvc5.Knowleadge.Controllers" }
     );
-    * 解析多路由控制命名空间
+* 解析多路由控制命名空间
     routes.MapRoute("Default", "{controller}/{action}/{id}",
         new { controller = "Home", action = "Index", id = UrlParameter.Optional },
         namespaces: new string[] { "Mvc5.Knowleadge.AdditionalControllers" }
@@ -293,12 +295,12 @@
         new { controller = "^H.*", action = "^Index$|^About$" },
         new[] { "Mvc5.Knowleadge.Controllers" });
 #### B. 使用Http方法约束路由：httpMethod = new HttpMethodConstraint("GET")
-    * 添加约束
+* 添加约束
     routes.MapRoute("UseConstraint", "{controller}/{action}/{id}/{*catchall}",
         new { controller = "Home", action = "Index", id = UrlParameter.Optional },
         new { controller = "^H.*", action = "^Index$|^About$", httpMethod = new HttpMethodConstraint("GET") },
         new[] { "Mvc5.Knowleadge.Areas.UrlsAndRoutes.Controllers" });
-    * 测试约束
+* 测试约束
     public void TestIncomingConstraint()
     {
         TestRouteMatch("~/Home/About/All/Delete/Parm", "Home", "About", new { id = "All", catchall = "Delete/Parm" });
@@ -414,9 +416,9 @@
 ### i. 借助Html.ActionLink()辅助器方法说明URL的出站规则
 #### A. 结合路由系统生成URL
 ##### a. 使用示例
-    * 路由方案
+    路由方案
     routes.MapRoute("MyRoute", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
-    * 使用辅助器
+    使用辅助器
     @Html.ActionLink("输出URL", "CustomVariable")
     该示例生成
     URL：https://localhost:44344/Home/CustomVariable
@@ -425,12 +427,12 @@
 ##### a. 使用示例
     @Html.ActionLink("指定控制器", "Index", "Admin")
 ##### b. 结合不同路由方式
-    * 当使用下述约定路由方案
+    当使用下述约定路由方案
     context.MapRoute("NewRoute", "App/Do{action}", new { controller = "Admin"});
     示例最终生成
     URL：https://localhost:44344/App/DoIndex
     Html: <a href="/App/DoIndex">指定控制器</a>
-    *　当使用下述属性路由方案
+    当使用下述属性路由方案
         [Route("TestAction")]
         public ActionResult Index()
         {
@@ -445,34 +447,34 @@
     Html: <a href="/TestAction">指定控制器</a>
 #### C. 传递参数
 ##### a. 使用示例1
-    * 路由方案
+    路由方案
     context.MapRoute("NewRoute", "App/Do{action}", new { controller = "Admin" });
-    * 使用辅助器
+    使用辅助器
     @Html.ActionLink("设定参数", "CustomVariable", "Admin", new { id = "Hello" }, null)
-    * 结果  
+    结果  
     https://localhost:44344/App/DoCustomVariable?id=Hello
 ##### b. 使用实例2
-    * 路由方案
+    路由方案
     routes.MapRoute("MyRoute", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
-    * 使用辅助器
+    使用辅助器
     @Html.ActionLink("设定参数", "CustomVariable", new { id = "Hello" })
-    * 结果  
+    结果  
     https://localhost:44344/Home/CustomVariable/Hello
 #### D. 传递标签属性(样式，id等等)
 ##### a. 使用示例
-    * 辅助器
+    辅助器
     @Html.ActionLink("设定参数", "CustomVariable", new { id = "Hello" },new { id="myAnchorID",@class="myCSSClass"})
-    * 结果
+    结果
     <a class="myCSSClass" href="/Home/CustomVariable/Hello" id="myAnchorID">设定参数</a>
 #### E. 其他方法
 ##### a. 生成全限定链接
-    * 示例
+* 示例
     @Html.ActionLink("设定参数", "CustomVariable","Home","https",
     "myserver.cloudwhales.com","myFragementName",
     new { id = "Hello" }, new { id = "myAnchorID", @class = "myCSSClass" })
-    * 结果
+* 结果
     <a class="myCSSClass" href="https://myserver.cloudwhales.com:44344/RoutesHighAttribute/Home/CustomVariable/Hello#myFragementName" id="myAnchorID">设定参数</a>
-    * 源代码
+* 源代码
     public static MvcHtmlString ActionLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, string protocol, string hostName, string fragment, object routeValues, object htmlAttributes);
 ##### b. 生成纯URL：@Url.Action()
     @Url.Action("Index","Home",new{id="MyId"})
@@ -481,13 +483,13 @@
     RedirectToRoute(controller="Home",action="Index",id="MyID")
 ##### d. 根据特定属性路由生成URL
     每条路由方案都有对应的名字，所以可以使用Html.RouteLink()覆盖默认路由匹配。
-    * 路由方案
+    路由方案
     routes.MapRoute("MyRoute", "{controller}/{action}");
     routes.MapRoute("MyOtherRoute", "App/{action}", new { controller = "Home" });
-    * 默认辅助方法的使用
+    默认辅助方法的使用
     @Html.ActionLink("测试1","Index","Customer")
     生成: <a href="/Customer/Index">输出URL</a>
-    * 指定特定路由方案的复制器方法使用
+    指定特定路由方案的复制器方法使用
     @Html.RouteLink("测试2","MyOtherRoute","Index","Customer")
     生成: <a Length="8" href="/App/Index?Length=5">输出URL</a>
     补充：对应的属性路由也可以设置类似名称
@@ -495,9 +497,28 @@
 
 
 ### ii. 定制路由规则
-
+#### A. 创建自定义的RouteBase实现
+    如果需要改变标准Route对象对URL进行匹配的方式。例如你不喜欢标准方式，或者应用程序迁移到Mvc框架时，对外提供的
 ### iii. 使用区域
 
 ### iv. 对磁盘进行路由请求
+### v. 绕过路由系统 使用IgnoreRoute()
+    routes.IgnoreRoute("Areas/Content/{filename}.html");
+### vi. 最佳URL效果
+    项目创建选择MVC模板时，已经默认了很好的路由方案，基本可以不用修改，数值URL知识为了让开发人员对架构的理解更清晰。
+#### A. 使URL整洁和人性化
+##### a. 示例
+    例如当当网，对于衣服的裤装类型，进行品牌、尺码、裤长的筛选的URL
+[裤装筛选](http://category.dangdang.com/cid4008152-a1%3A5275_1000131%3A4_3%3A4503024.html "品类筛选")
+    简洁后 http://category.dangdang.com/pants/brand/Size/length
+##### b.生成简介URL原则：
+* 设计的URL应用以描述内容，热不应该显示应用程序的细节，例如 /Articles/AnnualReport.比/WebSize_V2/Articles/AnnualReport简洁
+* 尽可能采用内容标日而不是ID号，如 /Articles/AnnualReport. 比  /Articles/24324 人性化. 如果两者都采用 /Articles/24324/AnnualReport可以改善搜索引擎排序
+* 对Html文件尽量不使用扩展名.html 对资源文件jpg、zip等可适当设置MIME类型,对文档文件pdf最好使用对应格式
+* 尽量创建一种具备层次感的URL /Products/Menswear/Shirts/Red
+* 避免使用符号、代码、字符序列，需要使用单词分割字符串时,单词直接通过短线分割，如 my-great-article. 加号，下滑线甚至空格都是不友好的
+* URL确定后尽量不要打破，防止链接失效，需要修改时通过永久重定向使用旧的URL方案
+* 让URL具备一致性，简短、易于输入、可剪切且持久稳定，对外可以让网站更加形象化 
+* URL默认不区分大小写
 
-### v. 绕过路由系统即最佳URL效果
+##### c. GET和POST的选择

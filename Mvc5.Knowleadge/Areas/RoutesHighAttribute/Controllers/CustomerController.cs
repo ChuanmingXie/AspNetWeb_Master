@@ -19,5 +19,12 @@ namespace Mvc5.Knowleadge.Areas.RoutesHighAttribute.Controllers
             return View("ActionName");
         }
 
+        public ActionResult List()
+        {
+            ViewBag.Controller = "Customer";
+            ViewBag.Action = "List";
+            return View("ActionName");
+        }
+
     }
 }

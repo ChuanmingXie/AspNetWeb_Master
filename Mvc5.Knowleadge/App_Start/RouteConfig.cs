@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+using Mvc5.Knowleadge.Infrastructure;
 
 namespace Mvc5.Knowleadge
 {
@@ -7,9 +8,12 @@ namespace Mvc5.Knowleadge
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            //routes.RouteExistingFiles = true;
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             //routes.MapRoute("MyRoute", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
             //routes.MapMvcAttributeRoutes();
+            //routes.Add(new LegacyRoute("~/Legacy/GetLegacyURL", "~/RoutesHighAttribute/Legacy/GetLegacyURL"));
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

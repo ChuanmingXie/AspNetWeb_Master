@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\file\StaticContent.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -123,6 +124,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Areas\RoutesHighAttribute\Views\Home\Index.cshtml" />
     <Content Include="Areas\RoutesHighAttribute\Views\Shared\ActionName.cshtml" />
+    <Content Include="Areas\RoutesHighAttribute\Views\Legacy\GetLegacyURL.cshtml" />
+    <Content Include="Views\Shared\GetLegacyURL.cshtml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
@@ -141,6 +144,7 @@
     <Compile Include="Areas\RoutesHighAttribute\Controllers\CustomerController.cs" />
     <Compile Include="Areas\RoutesHighAttribute\Controllers\HomeController.cs" />
     <Content Include="Areas\file\16.1.1InitRoutes.txt" />
+    <Compile Include="Areas\RoutesHighAttribute\Controllers\LegacyController.cs" />
     <Compile Include="Areas\RoutesHighAttribute\RoutesHighAttributeAreaRegistration.cs" />
     <Compile Include="Areas\UrlsAndRoutes\Controllers\HomeController.cs" />
     <Compile Include="Areas\UrlsAndRoutes\UrlsAndRoutesAreaRegistration.cs" />
@@ -149,6 +153,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\CustomRouteHander.cs" />
+    <Compile Include="Infrastructure\LegacyRoute.cs" />
     <Compile Include="Infrastructure\UserAgentConstraint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

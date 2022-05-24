@@ -44,7 +44,7 @@ Install-package Microsoft.AspNet.Mvc -projectname Mvc5.Knowleadge.Tests</pre>
             <p class="text-content">
                 通过修改路由方案，在Html.ActionLink辅助器方法的中会显示URL实际生成的效果，测试链接：
                 @*@Html.ActionLink("路由初始化", "Index", "Admin", new { area = "RoutesHighAttribute" }, null) <br />*@
-                @Html.ActionLink("生成URL", "Index", "Admin")<br />
+                @Html.ActionLink("生成URL", "Index", "Admin")
             </p>
             <br />
             <h4>16.2.2 以其他控制器为目标</h4>
@@ -59,44 +59,58 @@ Install-package Microsoft.AspNet.Mvc -projectname Mvc5.Knowleadge.Tests</pre>
 
             <h4>16.2.3 以其他控制器为目标</h4>
             <p class="text-content">
-                @Html.ActionLink("设定参数", "CustomVariable", "Admin", new { id = "Hello" }, null)<br />
+                @Html.ActionLink("设定参数", "CustomVariable", "Admin", new { id = "Hello" }, null)
             </p>
             <p class="text-content">
-                @Html.ActionLink("设定参数", "CustomVariable", new { id = "Hello" })<br />
+                @Html.ActionLink("设定参数", "CustomVariable", new { id = "Hello" })
             </p>
 
             <h4>16.2.4 添加标签属性</h4>
             <p class="text-content">
-                @Html.ActionLink("设定参数", "CustomVariable", new { id = "Hello" }, new { id = "myAnchorID", @class = "myCSSClass" })<br />
+                @Html.ActionLink("设定参数", "CustomVariable", new { id = "Hello" }, new { id = "myAnchorID", @class = "myCSSClass" })
             </p>
             <p class="text-content">
-                @Html.ActionLink("设定参数", "CustomVariable","Home","https","myserver.cloudwhales.com","myFragementName"
-               ,new { id = "Hello" }, new { id = "myAnchorID", @class = "myCSSClass" })<br />
+                @Html.ActionLink("设定参数", "CustomVariable", "Home", "https", "myserver.cloudwhales.com", "myFragementName"
+               , new { id = "Hello" }, new { id = "myAnchorID", @class = "myCSSClass" })
             </p>
         </div>
-    </div>
 
-    <div id="spydiv" class="form-group col-sm-12">
-        <label for="" class="col-sm-2 control-label">定制路由系统:</label>
-        <div class="col-sm-10">
+        <div id="spydiv" class="form-group col-sm-12">
+            <h4>16.3.1 创建自定义的RouteBase实现</h4>
+            <p class="text-content">
+                @Html.ActionLink("测试定制路入站URL", "GetLegacyURL", "Legacy")
+            </p>
+            <p class="text-content">
+                @Html.ActionLink("测试定制路由出站URL", "GetLegacyURL", "Legacy", new { area = "RoutesHighAttribute", legacyURL = "~/articles/Windows_3.1_Overview.html" }, null)
+            </p>
+            <h4>16.3.2 创建自定义路由处理程序</h4>
+            <p class="text-content">
+                @Html.ActionLink("路由处理程序", "GetLegacyURL", "Legacy", new { area = "" }, null)
+            </p>
+        </div>
+
+        <div id="tabdiv" class="form-group col-sm-12">
+            <h4>16.5对磁盘文件进行路由请求</h4>
+            <p class="text-content">
+                <a href="~/Areas/file/StaticContent.html">对磁盘路由请求</a>
+            </p>
+            <p class="text-content">
+                @Html.ActionLink("对磁盘路由请求","List", "Customer")
+            </p>
+        </div>
+
+        <div id="paneldiv" class="form-group col-sm-12">
+            <label for="" class="col-sm-2 control-label">绕过路由系统:</label>
+            <div class="col-sm-10">
+            </div>
+        </div>
+
+        <div id="carouseldiv" class="form-group col-sm-12">
+            <label for="" class="col-sm-2 control-label">最佳的URL方案:</label>
+            <div class="col-sm-10">
+            </div>
         </div>
     </div>
-    <div id="tabdiv" class="form-group col-sm-12">
-        <label for="" class="col-sm-2 control-label">对磁盘文件使用路由:</label>
-        <div class="col-sm-10">
-        </div>
-    </div>
-    <div id="paneldiv" class="form-group col-sm-12">
-        <label for="" class="col-sm-2 control-label">绕过路由系统:</label>
-        <div class="col-sm-10">
-        </div>
-    </div>
-    <div id="carouseldiv" class="form-group col-sm-12">
-        <label for="" class="col-sm-2 control-label">最佳的URL方案:</label>
-        <div class="col-sm-10">
-        </div>
-    </div>
-</div>
 </div>
 
 @section Scripts{
